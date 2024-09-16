@@ -362,28 +362,170 @@
 //* Примітки
 //* Повідомлення про твердження можуть бути незрозумілими щодо того, що вони відображають у деяких мовах. Якщо ви читаєте "...It Should encode XXX", це "XXX"очікуваний результат, а не вхідні дані!
 
-function duplicateEncode(word) {
-   let charCount = {};
+// function duplicateEncode(str) {
+//    let lowerStr = str.toLowerCase(); // Приводимо рядок до нижнього регістру
+//    let charCount = {}; // Об'єкт для підрахунку кількості символів
 
-   for (let char of word) {
-      charCount[char] = (charCount[char] || 0) + 1;
-   }
-   let result = '';
-   for (let char of word) {
-      if (charCount[char] > 1) {
-         result += ')';
-      } else {
-         result += '(';
-      }
-   }
+//    // Підраховуємо кількість появ кожного символу
+//    for (let char of lowerStr) {
+//       charCount[char] = (charCount[char] || 0) + 1;
+//    }
 
-   return result;
-}
+//    // Формуємо новий рядок на основі кількості появ символів
+//    let result = '';
+//    for (let char of lowerStr) {
+//       if (charCount[char] > 1) {
+//          result += ')'; // Якщо символ зустрічається більше одного разу
+//       } else {
+//          result += '('; // Якщо символ зустрічається лише один раз
+//       }
+//    }
+
+//    return result;
+// }
 
 // const pass = prompt('Password');
 // console.log(pass.replace(/./g, '*'));
 
-console.log(duplicateEncode('din'));
-console.log(duplicateEncode('recede'));
-console.log(duplicateEncode('Success'));
-console.log(duplicateEncode('(( @'));
+// console.log(duplicateEncode('din'));
+// console.log(duplicateEncode('recede'));
+// console.log(duplicateEncode('Success'));
+// console.log(duplicateEncode('(( @'));
+
+// TODO Дуже просто, якщо задано число (ціле / десяткове / обидва залежно від мови), знайти його протилежність (адитивне зворотне).
+
+// * приклади:
+// * 1: -1
+// * 14: -14
+// * -34: 34
+
+// function opposite(number) {
+//    return number - number * 2;
+// }
+
+// console.log(opposite(12));
+// console.log(opposite(17));
+// console.log(opposite(-7));
+// console.log(opposite(-798));
+
+// TODO Вам буде надано масив a і значення x. Все, що вам потрібно зробити, це перевірити, чи наданий масив містить значення. Масив може містити числа або рядки. X може бути будь-яким. Повертає true, якщо масив містить значення, falseякщо ні.
+
+// function check(a, x) {
+//    return a.some((item) => item === x);
+// }
+
+// console.log(check([101, 45, 75, 105, 99, 107], 107));
+// console.log(check(['what', 'a', 'great', 'kata'], 'kat'));
+
+// TODO Ви маєте набір слів, щоб знайти слово з найвищим балом. Кожна літера слова отримує бали відповідно до її позиції в алфавіті: a = 1, b = 2, c = 3 etc. Наприклад, оцінка abad( 8 - бо 1 + 2 + 1 + 4). Вам потрібно повернути слово з найвищим балом у вигляді рядка. Якщо два слова мають однакові результати, повертається слово, яке з’являється першим у вихідному рядку. Усі літери будуть малими, і всі введені дані будуть дійсними.
+
+// function high(sentence) {
+//    const words = sentence.split(' ');
+
+//    const scoreWord = (word) => {
+//       return word
+//          .split('')
+//          .reduce((sum, char) => sum + (char.charCodeAt(0) - 96), 0);
+//    };
+
+//    let highestScore = 0;
+//    let highestWord = '';
+
+//    for (let word of words) {
+//       let score = scoreWord(word);
+//       if (score > highestScore) {
+//          highestScore = score;
+//          highestWord = word;
+//       }
+//    }
+
+//    return highestWord;
+// }
+
+// console.log(high('man i need a taxi up to ubud')); // taxi
+// console.log(high('what time are we climbing up the volcano')); // volcano
+// console.log(high('take me to semynak')); // semynak
+// console.log(high('aa b')); // aa
+
+// TODO Ваше завдання — написати функцію, яка повертає -й n член наступного ряду, який є сумою перших n членів послідовності ( n є вхідним параметром). Щоб завершити це, вам потрібно буде з’ясувати правило ряду. Вам потрібно округлити відповідь до 2 знаків після коми та повернути її як рядок. Якщо задане значення є 0, воно має повернути "0.00". Як аргументи вам будуть надані лише натуральні числа.
+
+//* Приклади (введення --> вихід)
+//* n
+//* 1 --> 1 --> "1.00"
+//* 2 --> 1 + 1/4 --> "1.25"
+//* 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+
+// function SeriesSum(n) {
+//    let i = 0,
+//       sum = 0,
+//       divider = 1;
+//    let num = 1;
+
+//    while (i < n) {
+//       sum += num / divider;
+//       i++;
+//       divider += 3;
+//    }
+
+//    if (n === 0) {
+//       return '0.00';
+//    } else {
+//       return sum.toFixed(2).toString();
+//    }
+// }
+
+// console.log(SeriesSum(0)); // '0.00'
+// console.log(SeriesSum(2)); // '1.25'
+// console.log(SeriesSum(3)); // '1.39'
+// console.log(SeriesSum(5)); // '1.57'
+// console.log(SeriesSum(7)); // '1.68'
+
+// TODO У цьому маленькому завданні вам надається рядок чисел, розділених пробілами, і ви повинні повернути найбільше та найменше число. Приклади
+
+//* highAndLow("1 2 3 4 5");  // return "5 1"
+//* highAndLow("1 2 -3 4 5"); // return "5 -3"
+//* highAndLow("1 9 3 4 -5"); // return "9 -5"
+
+// TODO Примітки: Усі номери дійсні Int32, перевіряти їх не потрібно. У вхідному рядку завжди буде принаймні одне число. Вихідний рядок має складатися з двох чисел, розділених одним пробілом, причому першим є найвище число.
+
+// function highAndLow(numbers) {
+//    let numMax = numbers.split(' ');
+//    let numMin = numbers.split(' ');
+//    let str = '';
+//    return (str = `${Math.max(...numMax)} ${Math.min(...numMin)}`);
+// }
+
+// console.log(highAndLow('1 2 3 4 5')); // 5 1
+// console.log(highAndLow('1 2 -3 4 5')); // 5 -3
+// console.log(highAndLow('1 9 3 4 -5')); // 9 -5
+
+// TODO Добре познайомився зі старшим братом Фібоначчі, він же Трібоначчі. Як уже видно з назви, він працює як Фібоначчі, але підсумовує останні 3 (замість 2) числа послідовності для генерації наступного. І, що гірше, я, на жаль, не почую, як італійці, які не є рідною мовою, намагаються її вимовити :(
+
+// TODO Отже, якщо ми хочемо розпочати нашу послідовність Трибоначчі з [1, 1, 1]початкового введення (також відомого як підпис ), у нас буде така послідовність:
+//* [1, 1, 1, 3, 5, 9, 17, 31, ...]
+
+// TODO Але що, якби ми почали з [0, 0, 1]підпису? Оскільки [0, 1]замість того , щоб зсунути[1, 1] звичайну послідовність Фібоначчі на одне місце, у вас може виникнути спокуса подумати, що ми отримаємо ту саму послідовність, зміщену на 2 місця, але це не так, і ми отримаємо:
+//* [0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
+
+// TODO Що ж, можливо, ви вже здогадалися, але щоб було зрозуміло: вам потрібно створити функцію Фібоначчі, яка, задана масивом/списком підписів , повертає перші n елементів — підпис, включений у так засіяну послідовність. Підпис завжди буде містити 3 цифри; n завжди буде невід’ємним числом; if n == 0, тоді поверніть порожній масив (окрім C повертає NULL) і будьте готові до будь-чого іншого, що не є чітко визначеним;)
+
+// function tribonacci(signature, n) {
+//    if (n <= 3) return signature.slice(0, n);
+
+//    let result = [...signature];
+
+//    for (let i = 3; i < n; i++) {
+//       result[i] = result[i - 1] + result[i - 2] + result[i - 3];
+//    }
+
+//    return result;
+// }
+
+// console.log(tribonacci([1, 1, 1], 10)); // [1,1,1,3,5,9,17,31,57,105]
+// console.log(tribonacci([0, 0, 1], 10)); // [0,0,1,1,2,4,7,13,24,44]
+// console.log(tribonacci([0, 1, 1], 10)); // [0,1,1,2,4,7,13,24,44,81]
+// console.log(tribonacci([1, 0, 0], 10)); // [1,0,0,1,1,2,4,7,13,24]
+// console.log(tribonacci([0, 0, 0], 10)); // [0,0,0,0,0,0,0,0,0,0]
+// console.log(tribonacci([1, 2, 3], 10)); // [1,2,3,6,11,20,37,68,125,230]
+// console.log(tribonacci([1, 1, 1], 1)); // [1]
+// console.log(tribonacci([300, 200, 100], 0)); // []
