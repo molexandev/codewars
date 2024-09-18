@@ -529,3 +529,152 @@
 // console.log(tribonacci([1, 2, 3], 10)); // [1,2,3,6,11,20,37,68,125,230]
 // console.log(tribonacci([1, 1, 1], 1)); // [1]
 // console.log(tribonacci([300, 200, 100], 0)); // []
+
+// TODO Напишіть функцію, persistenceяка приймає додатний параметр numі повертає його мультиплікативну стійкість, яка є кількістю разів, які ви повинні помножити цифри, numпоки не досягнете єдиної цифри.
+
+// function persistence(num) {
+//    let count = 0;
+
+//    while (num >= 10) {
+//       num = num
+//          .toString()
+//          .split('')
+//          .reduce((acc, digit) => acc * Number(digit), 1);
+
+//       count++;
+//    }
+
+//    return count;
+// }
+
+// console.log(persistence(39)); // 3
+// console.log(persistence(4)); // 0
+// console.log(persistence(25)); // 2
+// console.log(persistence(999)); // 4
+
+// TODO Вам буде надано масив чисел. Ви повинні відсортувати непарні числа в порядку зростання, залишаючи парні числа на вихідних позиціях.
+
+//* [7, 1]  =>  [1, 7]
+//* [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+//* [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+//* Далі, перебираючи початковий масив, можна замінити кожне непарне число на відповідне зі списку відсортованих, залишаючи парні числа на своїх місцях.
+
+// function sortArray(array) {
+//    let newArr = array.filter((num) => num % 2 !== 0).sort((a, b) => a - b);
+//    let index = 0;
+//    return array.map((num) => (num % 2 !== 0 ? newArr[index++] : num));
+// }
+
+// console.log(sortArray([7, 1]));
+// console.log(sortArray([7, 1, 2]));
+// console.log(sortArray([5, 8, 6, 3, 4]));
+// console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
+
+// TODO Дитина грається з м'ячем на n-му поверсі висотного будинку. Висота цього поверху над рівнем землі h відома. Він кидає м'яч із вікна. М'яч відскакує (наприклад) на дві третини своєї висоти (відскок 0,66). Мати дивиться у вікно, що на відстані півтора метра від землі. Скільки разів мама побачить м’яч, що проходить перед її вікном (включаючи, коли він падає і підстрибує)?
+
+// TODO Для правильного експерименту необхідно виконати три умови: Параметр float "h" у метрах має бути більше 0 Параметр float "bounce" має бути більше 0 і менше 1 Параметр float "window" має бути меншим за h. Якщо виконано всі три вищенаведені умови, поверніть додатне ціле число, інакше поверніть -1. Примітка: М'яч можна побачити, лише якщо висота м'яча, що відскакує, строго перевищує параметр вікна.
+
+//* - h = 3, bounce = 0.66, window = 1.5, result is 3
+//*
+//* - h = 3, bounce = 1, window = 1.5, result is -1
+//*
+//* (Condition 2) not fulfilled).
+
+// function bouncingBall(h, bounce, window) {
+//    if (h > 0 && bounce > 0 && bounce < 1 && window < h) {
+//       let index = 1;
+
+//       for (let i = 1; window < h * bounce; i++) {
+//          h *= bounce;
+//          index = i * 2 + 1;
+//       }
+
+//       return index;
+//    } else {
+//       return -1;
+//    }
+// }
+
+// console.log(bouncingBall(150, 0.66, 1.5)); // 23
+// console.log(bouncingBall(3.0, 0.66, 1.5)); // 3
+// console.log(bouncingBall(30.0, 0.66, 1.5)); // 15
+// console.log(bouncingBall(3.0, 1.0, 1.5)); // -1
+
+// TODO Після важкої роботи в офісі ви вирішили трохи відпочити у відпустці. Тож ви забронюєте рейс для себе та вашої дівчини та спробуєте залишити весь безлад позаду. Вам знадобиться орендований автомобіль, щоб пересуватися під час відпустки. Менеджер автопрокату робить вам вигідні пропозиції. Кожен день оренди автомобіля коштує 40 доларів. Якщо ви орендуєте автомобіль на 7 і більше днів, ви отримуєте знижку 50 доларів США. Крім того, якщо ви орендуєте автомобіль на 3 або більше днів, ви отримуєте 20 доларів США від загальної суми. Напишіть код, який видає загальну суму за різні дні (d).
+
+// function rentalCarCost(d) {
+//    let price = 40,
+//       disc1 = 20,
+//       disc2 = 50;
+
+//    if (d < 3) {
+//       return price * d;
+//    } else if (d >= 3 && d < 7) {
+//       return price * d - disc1;
+//    } else if (d >= 7) {
+//       return price * d - disc2;
+//    }
+
+//    return price;
+// }
+
+// console.log(rentalCarCost(1));
+// console.log(rentalCarCost(2));
+// console.log(rentalCarCost(3));
+// console.log(rentalCarCost(5));
+// console.log(rentalCarCost(6));
+// console.log(rentalCarCost(7));
+// console.log(rentalCarCost(17));
+
+// TODO До кас самообслуговування в супермаркеті стоїть черга. Ваше завдання — написати функцію для обчислення загального часу, необхідного всім клієнтам для виписки! введення:
+// TODO - клієнти: масив натуральних чисел, що представляють чергу. Кожне ціле число представляє клієнта, а його значення — кількість часу, який йому потрібен для виписки. n: натуральне число, кількість кас. вихід. Функція має повертати ціле число, загальний необхідний час. важливо Перегляньте приклади та пояснення нижче, щоб переконатися, що ви правильно зрозуміли завдання:)
+
+// * queueTime([5, 3, 4], 1);
+// should return 12
+// because when there is 1 till, the total time is just the sum of the times
+
+// * queueTime([10, 2, 3, 3], 2);
+// should return 10
+// because here n=2 and the 2nd, 3rd, and 4th people in the
+// queue finish before the 1st person has finished.
+
+// * queueTime([2, 3, 10], 2);
+
+// function queueTime(customers, n) {
+//    if (customers.length == 0) {
+//       return 0;
+//    } else if (n >= customers.length) {
+//       return Math.max(...customers);
+//    } else if (n < customers.length) {
+//       let tills = Array(n).fill(0);
+
+//       for (let i = 0; i < customers.length; i++) {
+//          let index = tills.indexOf(Math.min(...tills));
+//          tills[index] += customers[i];
+//          console.log(tills[index]);
+//       }
+//       return Math.max(...tills);
+//    }
+// }
+
+// console.log(queueTime([], 1)); // 0
+// console.log(queueTime([1, 2, 3, 4], 1)); // 10
+// console.log(queueTime([2, 2, 3, 3, 4, 4], 2)); // 9
+// console.log(queueTime([1, 2, 3, 4, 5], 100)); // 5
+// console.log(queueTime([10, 2, 3, 3], 2)); // 10
+
+// TODO Дано масив цілих чисел у вигляді рядків і чисел, повернути суму значень масиву так, якби всі були числами.Поверніть свою відповідь у вигляді числа.
+
+function sumMix(x) {
+   let num = 0;
+   x.forEach((item) => {
+      console.log((num += +item));
+   });
+   return num;
+   // return x.reduce((a, b) => +a + +b);
+}
+
+console.log(sumMix([9, 3, '7', '3'])); // 22
+console.log(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7])); // 42
+console.log(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2, '0'])); //41
