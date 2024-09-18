@@ -669,10 +669,9 @@
 function sumMix(x) {
    let num = 0;
    x.forEach((item) => {
-      console.log((num += +item));
+      num += +item;
    });
    return num;
-   // return x.reduce((a, b) => +a + +b);
 }
 
 console.log(sumMix([9, 3, '7', '3'])); // 22
