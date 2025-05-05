@@ -666,14 +666,86 @@
 
 // TODO Дано масив цілих чисел у вигляді рядків і чисел, повернути суму значень масиву так, якби всі були числами.Поверніть свою відповідь у вигляді числа.
 
-function sumMix(x) {
-   let num = 0;
-   x.forEach((item) => {
-      num += +item;
-   });
-   return num;
-}
+// function sumMix(x) {
+//    let num = 0;
+//    x.forEach((item) => {
+//       num += +item;
+//    });
+//    return num;
+// }
 
-console.log(sumMix([9, 3, '7', '3'])); // 22
-console.log(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7])); // 42
-console.log(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2, '0'])); //41
+// console.log(sumMix([9, 3, '7', '3'])); // 22
+// console.log(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7])); // 42
+// console.log(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2, '0'])); //41
+
+// const btn = document.querySelector('#btnp');
+// const blocks = document.querySelectorAll('.aaa');
+
+// btn.addEventListener('click', function () {
+//    blocks.forEach((item) => {
+//       item.classList.toggle('bbb');
+//    });
+// });
+
+// const person = {
+//    name: 'Саша',
+//    greet: function () {
+//       console.log(this.name);
+//    },
+// };
+
+// const greetFn = person.greet.bind(person); // Прив'язуємо контекст до функції
+// greetFn();
+
+// for (let i = 0; i < 5; i++) {
+//    setTimeout(() => console.log(i), 1000 * i);
+// }
+
+// TODO Напиши функцію getUserPosts(userId), яка: Приймає userId (число) як аргумент.Завантажує пости користувача з API: https://jsonplaceholder.typicode.com/posts?userId=USER_ID Виводить у консоль заголовки постів цього користувача (властивість title).
+//
+// const getUserPosts = async (userId) => {
+//    try {
+//       const response = await fetch(
+//          `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+//       );
+
+//       if (!response.ok) {
+//          throw new Error('Помилка при завантаженні даних');
+//       }
+
+//       const data = await response.json();
+//       const userPosts = data.map((item) => item.title);
+//       console.log(userPosts);
+//    } catch (error) {
+//       console.error('Сталася помилка:', error.message);
+//    }
+// };
+
+// getUserPosts(1);
+
+// TODO Напиши функцію, яка: Завантажує всіх користувачів. Завантажує всі пости. Для кожного користувача виводить в онсоль: 'Ім'я користувача: кількість постів'
+
+// const getUserPosts = async () => {
+//    const users = await fetch('https://jsonplaceholder.typicode.com/users');
+//    const posts = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+//    if (!users.ok || !posts.ok) {
+//       throw new Error('Помилка при завантаженні даних');
+//    }
+
+//    const usersData = await users.json();
+//    const postsData = await posts.json();
+
+//    const userPostStats = usersData.map((user) => {
+//       return {
+//          name: user.name,
+//          postsCount: postsData.filter((post) => post.userId === user.id).length,
+//       };
+//    });
+
+//    userPostStats.forEach((user) => {
+//       console.log(`${user.name}: ${user.postsCount}`);
+//    });
+// };
+
+// getUserPosts();

@@ -1,3 +1,28 @@
 body {
    background-color: #000;
+   font-size: 24px;
+}
+.aaa {
+   width: 100%;
+   height: 50px;
+   margin-bottom: 20px;
+   background-color: #ffa;
+}
+.bbb {
+   padding-left: 50px;
+   width: 50%;
+   margin: 20px auto;
+}
+#btnp {
+   font-size: 24px;
+   width: 350px;
+   height: 100px;
+   cursor: pointer;
+   background-color: #aff;
+
+   margin-bottom: 20px;
+}
+.container {
+   max-width: 1100px;
+   margin: 0 auto;
 }
