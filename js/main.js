@@ -749,3 +749,28 @@
 // };
 
 // getUserPosts();
+
+function createUser(name) {
+   let loginCount = 0;
+
+   return {
+      getName() {
+         return name;
+      },
+      login() {
+         loginCount++;
+         console.log(`${name} has logged in ${loginCount} times.`);
+      },
+   };
+}
+
+const user1 = createUser('Sasha');
+
+user1.getName(); // "Sasha"
+user1.login(); // Sasha has logged in 1 times.
+user1.login();
+user1.login();
+user1.login();
+user1.login();
+user1.login();
+user1.login();
