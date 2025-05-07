@@ -750,27 +750,116 @@
 
 // getUserPosts();
 
-function createUser(name) {
-   let loginCount = 0;
+// TODO Замикання (практика)
+
+// function createUser(name) {
+//    let loginCount = 0;
+
+//    return {
+//       getName() {
+//          return name;
+//       },
+//       login() {
+//          loginCount++;
+//          console.log(`${name} has logged in ${loginCount} times.`);
+//       },
+//    };
+// }
+
+// const user1 = createUser('Sasha');
+
+// user1.getName(); // "Sasha"
+// user1.login(); // Sasha has logged in 1 times.
+// user1.login();
+// user1.login();
+// user1.login();
+// user1.login();
+// user1.login();
+// user1.login();
+
+//
+
+// function createCounter() {
+//    let count = 0;
+//    let obj = {
+//       increment: function () {
+//          return count++;
+//       },
+//       decrement: function () {
+//          return count--;
+//       },
+//       getValue: function () {
+//          return count;
+//       },
+//       reset: function () {
+//          count = 0;
+//          return count;
+//       },
+//    };
+//    return obj;
+//    // let count = 0;
+
+//    // return function () {
+//    //    console.log(count++);
+//    //    return count;
+//    // };
+// }
+
+// const counter = createCounter();
+
+// // counter(); // 1
+// // counter(); // 2
+// // counter(); // 3
+
+// console.log(counter.increment()); // 1
+// console.log(counter.increment()); // 2
+// console.log(counter.increment()); // 3
+// console.log(counter.decrement()); // 3
+// console.log(counter.getValue()); // 2
+// console.log(counter.reset()); // 0
+
+//
+
+function createAccount() {
+   let balance = 0;
 
    return {
-      getName() {
-         return name;
+      getBalance() {
+         if (balance > 0) {
+            return balance;
+         } else if (balance < 0) {
+            return 'Сталася помилка!';
+         } else if (balance == 0) {
+            return 'На вашому рахунку 0';
+         }
+         return balance;
       },
-      login() {
-         loginCount++;
-         console.log(`${name} has logged in ${loginCount} times.`);
+      deposit(num) {
+         return (balance += num);
+      },
+      withdraw(num) {
+         if (balance - num < 0) {
+            return 'Недостатньо коштів!';
+         } else {
+            return (balance -= num);
+         }
       },
    };
 }
 
-const user1 = createUser('Sasha');
+const myAccount = createAccount();
 
-user1.getName(); // "Sasha"
-user1.login(); // Sasha has logged in 1 times.
-user1.login();
-user1.login();
-user1.login();
-user1.login();
-user1.login();
-user1.login();
+console.log(myAccount.getBalance()); // 0
+
+myAccount.deposit(100);
+console.log(myAccount.getBalance()); // 100
+
+myAccount.withdraw(30);
+console.log(myAccount.getBalance()); // 70
+
+myAccount.withdraw(70);
+console.log(myAccount.getBalance());
+// myAccount.withdraw(-100); // Повідомлення про помилку
+// console.log(myAccount.getBalance()); // 70
+// myAccount.withdraw(200);
+// console.log(myAccount.getBalance()); // 70
