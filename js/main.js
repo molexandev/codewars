@@ -701,6 +701,72 @@
 //    setTimeout(() => console.log(i), 1000 * i);
 // }
 
+// TODO Напиши фцнкцію, яка підносить кожну цифру до 2-го степеня і складає їх в одне ціле число.
+
+// function squareDigits(num) {
+//    let str = num.toString().split('');
+
+//    let number = str
+//       .map((item) => {
+//          return item * item;
+//       })
+//       .join('');
+
+//    return Number(number);
+// }
+
+// console.log(squareDigits(952));
+// console.log(squareDigits(753));
+// console.log(squareDigits(864));
+// console.log(squareDigits(3212));
+
+// TODO Ви живете в місті Картазія, де всі дороги розташовані у формі ідеальної сітки. Ви прибули на зустріч на десять хвилин раніше, тому вирішили скористатися нагодою та прогулятися. Місто надає своїм мешканцям додаток для генерації прогулянок на телефонах — щоразу, коли ви натискаєте кнопку, він надсилає вам масив однолітерних рядків, що представляють напрямки для прогулянки (наприклад, ['n', 's', 'w', 'e']). Ви завжди проходите лише один квартал для кожної літери (напрямку), і ви знаєте, що вам знадобиться одна хвилина, щоб пройти один міський квартал, тому
+
+// TODO створіть функцію, яка повертатиме значення true, якщо прогулянка, яку надає вам додаток, займе у вас рівно десять хвилин (ви ж не хочете ні рано, ні пізно!), і, звичайно, поверне вас до початкової точки. В іншому випадку поверніть значення false .Примітка : ви завжди отримуватимете дійсний масив, що містить випадковий набір літер напрямку (лише 'n', 's', 'e' або 'w'). Він ніколи не поверне вам порожній масив (це не прогулянка, це стояння на місці!).
+
+function isValidWalk(walk) {
+   let e = [],
+      n = [],
+      s = [],
+      w = [],
+      arr = walk.sort();
+
+   arr.map((item, i) => {
+      if (item == 'e') {
+         e.push(item);
+      } else if (item == 'n') {
+         n.push(item);
+      } else if (item == 's') {
+         s.push(item);
+      } else if (item == 'w') {
+         w.push(item);
+      }
+   });
+
+   console.log(e);
+   console.log(w);
+   console.log(n);
+   console.log(s);
+
+   if (
+      e.length == w.length &&
+      n.length == s.length &&
+      e.length + w.length + s.length + n.length == 10
+   ) {
+      return true;
+   } else {
+      return false;
+   }
+}
+
+console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+console.log(
+   isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'])
+);
+console.log(isValidWalk(['w']));
+console.log(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+console.log(isValidWalk(['w', 'w', 'w', 's', 's', 's', 'n', 's', 'e']));
+
 // TODO Напиши функцію getUserPosts(userId), яка: Приймає userId (число) як аргумент.Завантажує пости користувача з API: https://jsonplaceholder.typicode.com/posts?userId=USER_ID Виводить у консоль заголовки постів цього користувача (властивість title).
 //
 // const getUserPosts = async (userId) => {
@@ -820,46 +886,119 @@
 
 //
 
-function createAccount() {
-   let balance = 0;
+// function createAccount() {
+//    let balance = 0;
 
-   return {
-      getBalance() {
-         if (balance > 0) {
-            return balance;
-         } else if (balance < 0) {
-            return 'Сталася помилка!';
-         } else if (balance == 0) {
-            return 'На вашому рахунку 0';
-         }
-         return balance;
-      },
-      deposit(num) {
-         return (balance += num);
-      },
-      withdraw(num) {
-         if (balance - num < 0) {
-            return 'Недостатньо коштів!';
-         } else {
-            return (balance -= num);
-         }
-      },
-   };
-}
+//    return {
+//       getBalance() {
+//          if (balance > 0) {
+//             return balance;
+//          } else if (balance < 0) {
+//             return 'Сталася помилка!';
+//          } else if (balance == 0) {
+//             return 'На вашому рахунку 0';
+//          }
+//          return balance;
+//       },
+//       deposit(num) {
+//          return (balance += num);
+//       },
+//       withdraw(num) {
+//          if (balance - num < 0) {
+//             return 'Недостатньо коштів!';
+//          } else {
+//             return (balance -= num);
+//          }
+//       },
+//    };
+// }
 
-const myAccount = createAccount();
+// const myAccount = createAccount();
 
-console.log(myAccount.getBalance()); // 0
+// console.log(myAccount.getBalance()); // 0
 
-myAccount.deposit(100);
-console.log(myAccount.getBalance()); // 100
+// myAccount.deposit(100);
+// console.log(myAccount.getBalance()); // 100
 
-myAccount.withdraw(30);
-console.log(myAccount.getBalance()); // 70
+// myAccount.withdraw(30);
+// console.log(myAccount.getBalance()); // 70
 
-myAccount.withdraw(70);
-console.log(myAccount.getBalance());
-// myAccount.withdraw(-100); // Повідомлення про помилку
+// myAccount.withdraw(70);
+// console.log(myAccount.getBalance());
+// myAccount.withdraw(100); // Повідомлення про помилку
 // console.log(myAccount.getBalance()); // 70
 // myAccount.withdraw(200);
 // console.log(myAccount.getBalance()); // 70
+
+// function createClickCounter(limit) {
+//    let clickCounter = 0;
+
+//    return function () {
+//       clickCounter++;
+
+//       if (clickCounter <= limit) {
+//          return console.log(`Клік № ${clickCounter}`);
+//       } else {
+//          return console.log(`Ліміт вичерпано!`);
+//       }
+//    };
+// }
+
+// const click = createClickCounter(3);
+
+// click(); // Клік №1
+// click(); // Клік №2
+// click(); // Клік №3
+// click(); // Ліміт вичерпано!
+// click(); // Ліміт вичерпано!
+
+// TODO This (практика)
+
+// const user = {
+//    name: 'Саша',
+//    sayHi() {
+//       console.log(this.name);
+//    },
+// };
+
+// const hi = user.sayHi.bind(user);
+// hi();
+
+// console.log(user);
+// console.log(user.name);
+// console.log(hi());
+
+//
+
+// function createUser() {
+//    let name = '';
+
+//    return {
+//       setName(newName) {
+//          return (name = newName);
+//       },
+//       getName() {
+//          return name;
+//       },
+//       sayHello() {
+//          return console.log(`Привіт, мене звати ${name}`);
+//       },
+//    };
+// }
+
+// const user = createUser();
+
+// user.setName('Саша');
+// // user.setName('Вася');
+// // user.setName('Петя');
+// user.sayHello(); // Привіт, мене звати Саша
+// console.log(user.getName()); // Саша
+
+// const user = {
+//    name: 'Саша',
+//    greet: () => {
+//       console.log(`Привіт, я ${this.name}`);
+//    },
+// };
+
+// user.greet(); // Що буде виведено? Чому?
