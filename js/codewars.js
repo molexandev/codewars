@@ -1,5 +1,7 @@
 'use strict';
 
+//! Завдання із Codewars
+
 //TODO Вам дадуть слово. Ваше завдання - повернути середній символ слова. Якщо довжина слова непарна, поверніть середній символ. Якщо довжина слова парна, поверніть 2 середніх символи. #Приклади:
 
 //* Kata.getMiddle("test") should return "es"
@@ -724,281 +726,42 @@
 
 // TODO створіть функцію, яка повертатиме значення true, якщо прогулянка, яку надає вам додаток, займе у вас рівно десять хвилин (ви ж не хочете ні рано, ні пізно!), і, звичайно, поверне вас до початкової точки. В іншому випадку поверніть значення false .Примітка : ви завжди отримуватимете дійсний масив, що містить випадковий набір літер напрямку (лише 'n', 's', 'e' або 'w'). Він ніколи не поверне вам порожній масив (це не прогулянка, це стояння на місці!).
 
-function isValidWalk(walk) {
-   let e = [],
-      n = [],
-      s = [],
-      w = [],
-      arr = walk.sort();
+// function isValidWalk(walk) {
+//    let e = [],
+//       n = [],
+//       s = [],
+//       w = [],
+//       arr = walk.sort();
 
-   arr.map((item, i) => {
-      if (item == 'e') {
-         e.push(item);
-      } else if (item == 'n') {
-         n.push(item);
-      } else if (item == 's') {
-         s.push(item);
-      } else if (item == 'w') {
-         w.push(item);
-      }
-   });
-
-   console.log(e);
-   console.log(w);
-   console.log(n);
-   console.log(s);
-
-   if (
-      e.length == w.length &&
-      n.length == s.length &&
-      e.length + w.length + s.length + n.length == 10
-   ) {
-      return true;
-   } else {
-      return false;
-   }
-}
-
-console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
-console.log(
-   isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'])
-);
-console.log(isValidWalk(['w']));
-console.log(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
-console.log(isValidWalk(['w', 'w', 'w', 's', 's', 's', 'n', 's', 'e']));
-
-// TODO Напиши функцію getUserPosts(userId), яка: Приймає userId (число) як аргумент.Завантажує пости користувача з API: https://jsonplaceholder.typicode.com/posts?userId=USER_ID Виводить у консоль заголовки постів цього користувача (властивість title).
-//
-// const getUserPosts = async (userId) => {
-//    try {
-//       const response = await fetch(
-//          `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
-//       );
-
-//       if (!response.ok) {
-//          throw new Error('Помилка при завантаженні даних');
+//    arr.map((item, i) => {
+//       if (item == 'e') {
+//          e.push(item);
+//       } else if (item == 'n') {
+//          n.push(item);
+//       } else if (item == 's') {
+//          s.push(item);
+//       } else if (item == 'w') {
+//          w.push(item);
 //       }
-
-//       const data = await response.json();
-//       const userPosts = data.map((item) => item.title);
-//       console.log(userPosts);
-//    } catch (error) {
-//       console.error('Сталася помилка:', error.message);
-//    }
-// };
-
-// getUserPosts(1);
-
-// TODO Напиши функцію, яка: Завантажує всіх користувачів. Завантажує всі пости. Для кожного користувача виводить в онсоль: 'Ім'я користувача: кількість постів'
-
-// const getUserPosts = async () => {
-//    const users = await fetch('https://jsonplaceholder.typicode.com/users');
-//    const posts = await fetch('https://jsonplaceholder.typicode.com/posts');
-
-//    if (!users.ok || !posts.ok) {
-//       throw new Error('Помилка при завантаженні даних');
-//    }
-
-//    const usersData = await users.json();
-//    const postsData = await posts.json();
-
-//    const userPostStats = usersData.map((user) => {
-//       return {
-//          name: user.name,
-//          postsCount: postsData.filter((post) => post.userId === user.id).length,
-//       };
 //    });
 
-//    userPostStats.forEach((user) => {
-//       console.log(`${user.name}: ${user.postsCount}`);
-//    });
-// };
-
-// getUserPosts();
-
-// TODO Замикання (практика)
-
-// function createUser(name) {
-//    let loginCount = 0;
-
-//    return {
-//       getName() {
-//          return name;
-//       },
-//       login() {
-//          loginCount++;
-//          console.log(`${name} has logged in ${loginCount} times.`);
-//       },
-//    };
+//    if (
+//       e.length == w.length &&
+//       n.length == s.length &&
+//       e.length + w.length + s.length + n.length == 10
+//    ) {
+//       return true;
+//    } else {
+//       return false;
+//    }
 // }
 
-// const user1 = createUser('Sasha');
-
-// user1.getName(); // "Sasha"
-// user1.login(); // Sasha has logged in 1 times.
-// user1.login();
-// user1.login();
-// user1.login();
-// user1.login();
-// user1.login();
-// user1.login();
+// console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+// console.log(
+//    isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'])
+// );
+// console.log(isValidWalk(['w']));
+// console.log(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+// console.log(isValidWalk(['w', 'w', 'w', 's', 's', 's', 'n', 's', 'e']));
 
 //
-
-// function createCounter() {
-//    let count = 0;
-//    let obj = {
-//       increment: function () {
-//          return count++;
-//       },
-//       decrement: function () {
-//          return count--;
-//       },
-//       getValue: function () {
-//          return count;
-//       },
-//       reset: function () {
-//          count = 0;
-//          return count;
-//       },
-//    };
-//    return obj;
-//    // let count = 0;
-
-//    // return function () {
-//    //    console.log(count++);
-//    //    return count;
-//    // };
-// }
-
-// const counter = createCounter();
-
-// // counter(); // 1
-// // counter(); // 2
-// // counter(); // 3
-
-// console.log(counter.increment()); // 1
-// console.log(counter.increment()); // 2
-// console.log(counter.increment()); // 3
-// console.log(counter.decrement()); // 3
-// console.log(counter.getValue()); // 2
-// console.log(counter.reset()); // 0
-
-//
-
-// function createAccount() {
-//    let balance = 0;
-
-//    return {
-//       getBalance() {
-//          if (balance > 0) {
-//             return balance;
-//          } else if (balance < 0) {
-//             return 'Сталася помилка!';
-//          } else if (balance == 0) {
-//             return 'На вашому рахунку 0';
-//          }
-//          return balance;
-//       },
-//       deposit(num) {
-//          return (balance += num);
-//       },
-//       withdraw(num) {
-//          if (balance - num < 0) {
-//             return 'Недостатньо коштів!';
-//          } else {
-//             return (balance -= num);
-//          }
-//       },
-//    };
-// }
-
-// const myAccount = createAccount();
-
-// console.log(myAccount.getBalance()); // 0
-
-// myAccount.deposit(100);
-// console.log(myAccount.getBalance()); // 100
-
-// myAccount.withdraw(30);
-// console.log(myAccount.getBalance()); // 70
-
-// myAccount.withdraw(70);
-// console.log(myAccount.getBalance());
-// myAccount.withdraw(100); // Повідомлення про помилку
-// console.log(myAccount.getBalance()); // 70
-// myAccount.withdraw(200);
-// console.log(myAccount.getBalance()); // 70
-
-// function createClickCounter(limit) {
-//    let clickCounter = 0;
-
-//    return function () {
-//       clickCounter++;
-
-//       if (clickCounter <= limit) {
-//          return console.log(`Клік № ${clickCounter}`);
-//       } else {
-//          return console.log(`Ліміт вичерпано!`);
-//       }
-//    };
-// }
-
-// const click = createClickCounter(3);
-
-// click(); // Клік №1
-// click(); // Клік №2
-// click(); // Клік №3
-// click(); // Ліміт вичерпано!
-// click(); // Ліміт вичерпано!
-
-// TODO This (практика)
-
-// const user = {
-//    name: 'Саша',
-//    sayHi() {
-//       console.log(this.name);
-//    },
-// };
-
-// const hi = user.sayHi.bind(user);
-// hi();
-
-// console.log(user);
-// console.log(user.name);
-// console.log(hi());
-
-//
-
-// function createUser() {
-//    let name = '';
-
-//    return {
-//       setName(newName) {
-//          return (name = newName);
-//       },
-//       getName() {
-//          return name;
-//       },
-//       sayHello() {
-//          return console.log(`Привіт, мене звати ${name}`);
-//       },
-//    };
-// }
-
-// const user = createUser();
-
-// user.setName('Саша');
-// // user.setName('Вася');
-// // user.setName('Петя');
-// user.sayHello(); // Привіт, мене звати Саша
-// console.log(user.getName()); // Саша
-
-// const user = {
-//    name: 'Саша',
-//    greet: () => {
-//       console.log(`Привіт, я ${this.name}`);
-//    },
-// };
-
-// user.greet(); // Що буде виведено? Чому?
