@@ -463,40 +463,209 @@
 
 //? super(...) викликається всередині конструктора, якщо тобі потрібно виконати конструктор батьківського класу (тут — не обов’язково, бо ми не перевизначали constructor в Developer, але покажу приклад нижче).
 
-class Animal {
-   constructor(name) {
-      this.name = name;
+// class Animal {
+//    constructor(name) {
+//       this.name = name;
+//    }
+
+//    speak() {
+//       console.log(`Я тварина, мене звати ${this.name}`);
+//    }
+// }
+
+// class Dog extends Animal {
+//    constructor(name, breed) {
+//       super(name);
+//       this.breed = breed;
+//    }
+//    bark() {
+//       console.log('Гав-гав!');
+//    }
+
+//    info() {
+//       console.log(`Я породи ${this.breed} і мене звати ${this.name}`);
+//    }
+// }
+
+// const cow = new Animal('Murka');
+// const cow2 = new Animal('Lyska');
+// const cow3 = new Animal('Kalynka');
+
+// cow.speak();
+// cow2.speak();
+// cow3.speak();
+
+// const dog = new Dog('Muchtar', 'Vivcharcka');
+
+// dog.speak();
+// dog.bark();
+// dog.info();
+
+//! Інкапсуляція
+
+// class BankAccount {
+//    #balance = 0;
+
+//    constructor(owner) {
+//       this.owner = owner;
+//    }
+
+//    deposit(amount) {
+//       return (this.#balance += amount);
+//    }
+
+//    withdraw(amount) {
+//       return (this.#balance -= amount);
+//    }
+
+//    getBalance() {
+//       return console.log(this.#balance);
+//    }
+// }
+
+// const acc = new BankAccount('Саша');
+
+// acc.deposit(1000);
+// acc.withdraw(300);
+// acc.getBalance(); // 700
+// // console.log(acc.#balance); // ❌ Помилка — не можна звертатись до пр
+
+//
+
+// class LimitedCounter {
+//    #value = 0;
+//    #min;
+//    #max;
+
+//    constructor(min, max) {
+//       this.#min = min;
+//       this.#max = max;
+//       this.#value = min;
+//    }
+
+//    increment() {
+//       if (this.#value < this.#max) {
+//          this.#value++;
+//       }
+//    }
+
+//    decrement() {
+//       if (this.#value > this.#min) {
+//          this.#value--;
+//       }
+//    }
+
+//    getValue() {
+//       console.log(this.#value);
+//    }
+// }
+
+// const counter = new LimitedCounter(0, 3);
+
+// counter.getValue(); // 0
+// counter.increment();
+// counter.increment();
+// counter.getValue(); // 2
+// counter.increment();
+// counter.increment(); // до max
+// counter.getValue(); // 3
+// counter.increment(); // нічого не змінює
+
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement(); // нижче min не йде
+// counter.getValue(); // 0
+
+//
+
+class CountdownTimer {
+   #time = 0;
+   #intervalId = null;
+   #initialTime = 0;
+   #isPaused = false;
+
+   constructor(seconds, onUpdate) {
+      this.time = seconds;
+      this.#initialTime = seconds;
+      this.onUpdate = onUpdate;
    }
 
-   speak() {
-      console.log(`Я тварина, мене звати ${this.name}`);
+   get time() {
+      return this.#time;
+   }
+
+   set time(value) {
+      if (typeof value !== 'number' || value < 0) return;
+      this.#time = value;
+      this.onUpdate?.(this.#time);
+   }
+
+   tick() {
+      if (this.#time > 0) {
+         this.#time--;
+         this.onUpdate?.(this.#time);
+      } else {
+         this.stop();
+         alert('⏰ Час вийшов!');
+      }
+   }
+
+   start() {
+      if (this.#intervalId || this.#time <= 0) return;
+      this.#isPaused = false;
+      this.#intervalId = setInterval(() => this.tick(), 1000);
+   }
+
+   pause() {
+      if (this.#intervalId) {
+         clearInterval(this.#intervalId);
+         this.#intervalId = null;
+         this.#isPaused = true;
+      }
+   }
+
+   resume() {
+      if (!this.#intervalId && this.#isPaused) {
+         this.#intervalId = setInterval(() => this.tick(), 1000);
+         this.#isPaused = false;
+      }
+   }
+
+   togglePause() {
+      this.#isPaused ? this.resume() : this.pause();
+   }
+
+   stop() {
+      clearInterval(this.#intervalId);
+      this.#intervalId = null;
+      this.#isPaused = false;
+   }
+
+   reset() {
+      this.stop();
+      this.#time = this.#initialTime;
+      this.onUpdate?.(this.#time);
    }
 }
 
-class Dog extends Animal {
-   constructor(name, breed) {
-      super(name);
-      this.breed = breed;
-   }
-   bark() {
-      console.log('Гав-гав!');
-   }
+const display = document.getElementById('display');
+const startBtn = document.getElementById('start');
+const resetBtn = document.getElementById('reset');
 
-   info() {
-      console.log(`Я породи ${this.breed} і мене звати ${this.name}`);
-   }
+// Функція оновлення інтерфейсу
+function updateDisplay(time) {
+   display.textContent = time < 10 ? `0${time}` : time;
 }
 
-const cow = new Animal('Murka');
-const cow2 = new Animal('Lyska');
-const cow3 = new Animal('Kalynka');
+const timer = new CountdownTimer(10, updateDisplay);
 
-cow.speak();
-cow2.speak();
-cow3.speak();
+startBtn.addEventListener('click', () => timer.start());
+resetBtn.addEventListener('click', () => timer.reset());
+const pauseBtn = document.getElementById('pause');
 
-const dog = new Dog('Muchtar', 'Vivcharcka');
-
-dog.speak();
-dog.bark();
-dog.info();
+pauseBtn.addEventListener('click', () => {
+   timer.togglePause();
+   pauseBtn.textContent =
+      pauseBtn.textContent === 'Пауза' ? 'Продовжити' : 'Пауза';
+});
