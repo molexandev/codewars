@@ -579,93 +579,323 @@
 
 //
 
-class CountdownTimer {
-   #time = 0;
-   #intervalId = null;
-   #initialTime = 0;
-   #isPaused = false;
+// class CountdownTimer {
+//    #time = 0;
+//    #intervalId = null;
+//    #initialTime = 0;
+//    #isPaused = false;
 
-   constructor(seconds, onUpdate) {
-      this.time = seconds;
-      this.#initialTime = seconds;
-      this.onUpdate = onUpdate;
-   }
+//    constructor(seconds, onUpdate) {
+//       this.time = seconds;
+//       this.#initialTime = seconds;
+//       this.onUpdate = onUpdate;
+//    }
 
-   get time() {
-      return this.#time;
-   }
+//    get time() {
+//       return this.#time;
+//    }
 
-   set time(value) {
-      if (typeof value !== 'number' || value < 0) return;
-      this.#time = value;
-      this.onUpdate?.(this.#time);
-   }
+//    set time(value) {
+//       if (typeof value !== 'number' || value < 0) return;
+//       this.#time = value;
+//       this.onUpdate?.(this.#time);
+//    }
 
-   tick() {
-      if (this.#time > 0) {
-         this.#time--;
-         this.onUpdate?.(this.#time);
-      } else {
-         this.stop();
-         alert('⏰ Час вийшов!');
-      }
-   }
+//    tick() {
+//       if (this.#time > 0) {
+//          this.#time--;
+//          this.onUpdate?.(this.#time);
+//       } else {
+//          this.stop();
+//          alert('⏰ Час вийшов!');
+//       }
+//    }
 
-   start() {
-      if (this.#intervalId || this.#time <= 0) return;
-      this.#isPaused = false;
-      this.#intervalId = setInterval(() => this.tick(), 1000);
-   }
+//    start() {
+//       if (this.#intervalId || this.#time <= 0) return;
+//       this.#isPaused = false;
+//       this.#intervalId = setInterval(() => this.tick(), 1000);
+//    }
 
-   pause() {
-      if (this.#intervalId) {
-         clearInterval(this.#intervalId);
-         this.#intervalId = null;
-         this.#isPaused = true;
-      }
-   }
+//    pause() {
+//       if (this.#intervalId) {
+//          clearInterval(this.#intervalId);
+//          this.#intervalId = null;
+//          this.#isPaused = true;
+//       }
+//    }
 
-   resume() {
-      if (!this.#intervalId && this.#isPaused) {
-         this.#intervalId = setInterval(() => this.tick(), 1000);
-         this.#isPaused = false;
-      }
-   }
+//    resume() {
+//       if (!this.#intervalId && this.#isPaused) {
+//          this.#intervalId = setInterval(() => this.tick(), 1000);
+//          this.#isPaused = false;
+//       }
+//    }
 
-   togglePause() {
-      this.#isPaused ? this.resume() : this.pause();
-   }
+//    togglePause() {
+//       this.#isPaused ? this.resume() : this.pause();
+//    }
 
-   stop() {
-      clearInterval(this.#intervalId);
-      this.#intervalId = null;
-      this.#isPaused = false;
-   }
+//    stop() {
+//       clearInterval(this.#intervalId);
+//       this.#intervalId = null;
+//       this.#isPaused = false;
+//    }
 
-   reset() {
-      this.stop();
-      this.#time = this.#initialTime;
-      this.onUpdate?.(this.#time);
-   }
-}
+//    reset() {
+//       this.stop();
+//       this.#time = this.#initialTime;
+//       this.onUpdate?.(this.#time);
+//    }
+// }
 
-const display = document.getElementById('display');
-const startBtn = document.getElementById('start');
-const resetBtn = document.getElementById('reset');
+// const display = document.getElementById('display');
+// const startBtn = document.getElementById('start');
+// const resetBtn = document.getElementById('reset');
 
-// Функція оновлення інтерфейсу
-function updateDisplay(time) {
-   display.textContent = time < 10 ? `0${time}` : time;
-}
+// // Функція оновлення інтерфейсу
+// function updateDisplay(time) {
+//    display.textContent = time < 10 ? `0${time}` : time;
+// }
 
-const timer = new CountdownTimer(10, updateDisplay);
+// const timer = new CountdownTimer(10, updateDisplay);
 
-startBtn.addEventListener('click', () => timer.start());
-resetBtn.addEventListener('click', () => timer.reset());
-const pauseBtn = document.getElementById('pause');
+// startBtn.addEventListener('click', () => timer.start());
+// resetBtn.addEventListener('click', () => timer.reset());
+// const pauseBtn = document.getElementById('pause');
 
-pauseBtn.addEventListener('click', () => {
-   timer.togglePause();
-   pauseBtn.textContent =
-      pauseBtn.textContent === 'Пауза' ? 'Продовжити' : 'Пауза';
-});
+// pauseBtn.addEventListener('click', () => {
+//    timer.togglePause();
+//    pauseBtn.textContent =
+//       pauseBtn.textContent === 'Пауза' ? 'Продовжити' : 'Пауза';
+// });
+
+//! This
+// function show() {
+//    console.log(this);
+// }
+
+// show();
+
+// const obj = {
+//    name: 'JS',
+//    show() {
+//       console.log(this.name);
+//    },
+// };
+
+// const fn = obj.show;
+// fn();
+
+// const obj = {
+//    name: 'JS',
+//    show: function () {
+//       const inner = () => {
+//          console.log(this.name);
+//       };
+//       inner();
+//    },
+// };
+
+// obj.show();
+
+//! call, apply, bind
+
+// const person = {
+//    name: 'Олекса',
+// };
+
+// function sayHi(city, age) {
+//    console.log(`Мене звати ${this.name}, я з ${city}, мені ${age}`);
+// }
+
+// sayHi.call(person, 'Львів', 30);
+// sayHi.apply(person, ['Львів', 30]);
+// const newFunc = sayHi.bind(person, 'Львів', 30);
+// newFunc();
+
+//
+
+// const user1 = { name: 'Саша' };
+// const user2 = { name: 'Наталя' };
+
+// function introduce(job, company) {
+//    console.log(
+//       `Мене звати ${this.name}, я працюю ${job} у компанії ${company}`
+//    );
+// }
+
+// introduce.call(user1, 'Front-end developer', 'Global Logic');
+// introduce.apply(user2, ['Маркетолог', 'АТБ']);
+// const foo = introduce.bind(user1, 'Front-end developer', 'Global Logic');
+// foo();
+
+//! Використання call, apply, bind у контексті об'єктно-орієнтованого програмування (OOP)
+
+// function Person(name, age) {
+//    this.name = name;
+//    this.age = age;
+// }
+
+// Person.prototype.introduce = function () {
+//    console.log(`Мене звати ${this.name}, мені ${this.age} років`);
+// };
+
+// function Developer(name, age, skill) {
+//    Person.call(this, name, age); // Викликаємо Person з контекстом this
+//    this.skill = skill;
+// }
+
+// Developer.prototype = Object.create(Person.prototype);
+// Developer.prototype.constructor = Developer;
+
+// Developer.prototype.code = function () {
+//    console.log(`Я програмую на ${this.skill}`);
+// };
+
+// const dev = new Developer('Саша', 30, 'JavaScript');
+// dev.introduce(); // Мене звати Саша, мені 30 років
+// dev.code(); // Я програмую на JavaScript
+
+//
+
+// class Person {
+//    constructor(name, age) {
+//       this.name = name;
+//       this.age = age;
+//    }
+
+//    introduce() {
+//       console.log(`Мене звати ${this.name}, мені ${this.age} років`);
+//    }
+// }
+
+// class Developer extends Person {
+//    constructor(name, age, skill) {
+//       super(name, age); // Викликає constructor з Person
+//       this.skill = skill;
+//    }
+
+//    code() {
+//       console.log(`Я пишу код на ${this.skill}`);
+//    }
+// }
+
+// const dev = new Developer('Наталя', 28, 'React');
+
+// dev.introduce(); // Мене звати Наталя, мені 28 років
+// dev.code(); // Я пишу код на React
+
+//
+
+// З помилкою:
+// class Timer {
+//    constructor(time) {
+//       this.time = time;
+//    }
+
+//    start() {
+//       this.time++;
+//       console.log(`Час йде ${this.time} сек.`);
+//    }
+// }
+
+// const timer = new Timer(0);
+// setInterval(timer.start(), 1000);
+
+// Виправлено:
+// class Timer {
+//    constructor(time) {
+//       this.time = time;
+//    }
+
+//    start() {
+//       this.time++;
+//       console.log(`Час йде ${this.time} сек.`);
+//    }
+// }
+
+// const timer = new Timer(0);
+// // setInterval(timer.start.bind(timer), 1000);
+// setInterval(() => {
+//    timer.start(0);
+// }, 1000);
+
+//
+
+// const intervalId = setInterval(() => {
+//    console.log('Hello');
+// }, 1000);
+
+// setInterval(() => {
+//    clearInterval(intervalId);
+// }, 3000);
+
+//
+
+// class Counter {
+//    constructor(startValue) {
+//       this.startValue = startValue;
+//       this.timerId = null;
+//    }
+
+//    start = () => {
+//       this.timerId = setInterval(() => {
+//          console.log(this.startValue++);
+//       }, 1000);
+//    };
+
+//    stop() {
+//       clearInterval(this.timerId);
+//    }
+// }
+
+// const counter = new Counter(10);
+// counter.start();
+
+// setTimeout(() => {
+//    counter.stop();
+// }, 5000);
+
+// class PauseableTimer {
+//    constructor(startValue) {
+//       this.startValue = startValue;
+//       this.timerId = null;
+//    }
+
+//    start() {
+//       this.timerId = setInterval(() => {
+//          console.log(++this.startValue);
+//       }, 1000);
+//    }
+
+//    pause() {
+//       clearInterval(this.timerId);
+//       this.timerId = null;
+//    }
+
+//    resume() {
+//       if (this.timerId === null) {
+//          this.timerId = setInterval(() => {
+//             console.log(++this.startValue);
+//          }, 1000);
+//       }
+//    }
+// }
+
+// const t = new PauseableTimer(0);
+
+// t.start();
+
+// setTimeout(() => t.pause(), 3000); // зупинка після 3 сек
+// setTimeout(() => t.resume(), 5000); // відновлення через 2 сек паузи
+
+const animal = {
+   eats: true,
+};
+const dog = Object.create(animal);
+dog.barks = true;
+
+console.log(dog.eats); // true
+console.log(dog.barks); // true
+console.log(Object.getPrototypeOf(dog) === animal); // true
