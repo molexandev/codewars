@@ -890,12 +890,22 @@
 // setTimeout(() => t.pause(), 3000); // зупинка після 3 сек
 // setTimeout(() => t.resume(), 5000); // відновлення через 2 сек паузи
 
-const animal = {
-   eats: true,
-};
-const dog = Object.create(animal);
-dog.barks = true;
+// const animal = {
+//    eats: true,
+// };
+// const dog = Object.create(animal);
+// dog.barks = true;
 
-console.log(dog.eats); // true
-console.log(dog.barks); // true
-console.log(Object.getPrototypeOf(dog) === animal); // true
+// console.log(dog.eats); // true
+// console.log(dog.barks); // true
+// console.log(Object.getPrototypeOf(dog) === animal); // true
+
+const person = {
+   name: 'Наталя',
+   sayHi() {
+      console.log(`Привіт, я ${this.name}`);
+   },
+};
+
+const say = person.sayHi;
+say(); // Що виведе?
