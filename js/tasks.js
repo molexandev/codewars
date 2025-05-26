@@ -900,12 +900,135 @@
 // console.log(dog.barks); // true
 // console.log(Object.getPrototypeOf(dog) === animal); // true
 
-const person = {
-   name: 'Наталя',
-   sayHi() {
-      console.log(`Привіт, я ${this.name}`);
-   },
-};
+//
 
-const say = person.sayHi;
-say(); // Що виведе?
+// class Animal {
+//    speak() {
+//       console.log('Тварина видає звук');
+//    }
+// }
+
+// class Dog extends Animal {
+//    speak() {
+//       console.log('Собака гавкає');
+//       super.speak();
+//    }
+// }
+
+// const rex = new Dog();
+// const sharik = new Dog();
+
+// rex.speak();
+// sharik.speak();
+
+//
+
+// class Animal {
+//    constructor(name) {
+//       this.name = name;
+//    }
+
+//    speak() {
+//       console.log(`Я тварина, мене звати ${this.name}`);
+//    }
+// }
+
+// class Dog extends Animal {
+//    constructor(name, breed) {
+//       super(name);
+//       this.breed = breed;
+//    }
+//    bark() {
+//       console.log('Гав-гав!');
+//    }
+
+//    info() {
+//       console.log(`Я породи ${this.breed} і мене звати ${this.name}`);
+//    }
+// }
+
+// const cow = new Animal('Murka');
+// const cow2 = new Animal('Lyska');
+// const cow3 = new Animal('Kalynka');
+
+// cow.speak();
+// cow2.speak();
+// cow3.speak();
+
+// const dog = new Dog('Muchtar', 'Vivcharcka');
+
+// dog.speak();
+// dog.bark();
+// dog.info();
+
+//
+
+// class Animal {
+//    constructor(name) {
+//       this.name = name;
+//    }
+
+//    speak() {
+//       console.log(`${this.name} видає звук`);
+//    }
+// }
+
+// class Cat extends Animal {
+//    constructor(name, color) {
+//       super(name);
+//       this.color = color;
+//    }
+
+//    speak() {
+//       console.log(`${this.name} ${this.color} нявкає`);
+//    }
+// }
+
+// class Dog extends Animal {
+//    constructor(name, breed) {
+//       super(name); // викликає constructor батьківського класу
+//       this.breed = breed;
+//    }
+
+//    speak() {
+//       console.log(`${this.name} гавкає`);
+//    }
+// }
+
+// const murchyk = new Cat('Murchyk', `(білий)`, 'нявкає');
+// murchyk.speak();
+
+// const rex = new Dog('Рекс', 'Вівчарка');
+// rex.speak(); // Рекс гавкає
+// console.log(rex.breed); // Вівчарка
+
+//
+
+class User {
+   constructor(name) {
+      this._name = name; // приватна умова – нижнє підкреслення
+   }
+
+   get name() {
+      console.log('Зчитуємо ім’я');
+      return this._name;
+   }
+
+   set name(value) {
+      console.log('Змінюємо ім’я');
+      if (value.length < 2) {
+         console.log('Ім’я занадто коротке');
+         return;
+      }
+      this._name = value;
+   }
+}
+
+const user = new User('Саша');
+
+console.log(user.name); // Зчитуємо ім’я → Саша
+
+user.name = 'О'; // Змінюємо ім’я → Ім’я занадто коротке
+user.name = 'Олекса'; // Змінюємо ім’я
+
+console.log(user.name); // Зчитуємо ім’я → Олекса
