@@ -1004,31 +1004,203 @@
 
 //
 
-class User {
-   constructor(name) {
-      this._name = name; // приватна умова – нижнє підкреслення
-   }
+// class User {
+//    constructor(name) {
+//       this._name = name; // приватна умова – нижнє підкреслення
+//    }
 
-   get name() {
-      console.log('Зчитуємо ім’я');
-      return this._name;
-   }
+//    get name() {
+//       console.log('Зчитуємо ім’я');
+//       return this._name;
+//    }
 
-   set name(value) {
-      console.log('Змінюємо ім’я');
-      if (value.length < 2) {
-         console.log('Ім’я занадто коротке');
-         return;
-      }
-      this._name = value;
-   }
-}
+//    set name(value) {
+//       console.log('Змінюємо ім’я');
+//       if (value.length < 2) {
+//          console.log('Ім’я занадто коротке');
+//          return;
+//       }
+//       this._name = value;
+//    }
+// }
 
-const user = new User('Саша');
+// const user = new User('Саша');
 
-console.log(user.name); // Зчитуємо ім’я → Саша
+// console.log(user.name); // Зчитуємо ім’я → Саша
 
-user.name = 'О'; // Змінюємо ім’я → Ім’я занадто коротке
-user.name = 'Олекса'; // Змінюємо ім’я
+// user.name = 'О'; // Змінюємо ім’я → Ім’я занадто коротке
+// user.name = 'Олекса'; // Змінюємо ім’я
 
-console.log(user.name); // Зчитуємо ім’я → Олекса
+// console.log(user.name); // Зчитуємо ім’я → Олекса
+
+//
+
+// class User {
+//    constructor(name, birthYear) {
+//       this.name = name;
+//       this.birthYear = birthYear;
+//    }
+
+//    get age() {
+//       return 2025 - this.birthYear;
+//    }
+
+//    set age(value) {
+//       console.log(
+//          'Вік не можна встановити напряму. Це розраховується з birthYear.'
+//       );
+//    }
+// }
+
+// const user = new User('Саша', 2000);
+
+// console.log(user.age); // 25 (якщо 2025 рік)
+
+// user.age = 30; // В консоль: Вік не можна встановити напряму...
+
+//
+
+// class Person {
+//    constructor(firstName, lastName) {
+//       this.firstName = firstName;
+//       this.lastName = lastName;
+//    }
+
+//    get fullName() {
+//       return `${this.firstName} ${this.lastName}`;
+//    }
+
+//    set fullName(value) {
+//       let newName = value.split(' ');
+//       this.firstName = newName[0];
+//       this.lastName = newName[1];
+//    }
+// }
+
+// const person = new Person('Олекса', 'Петренко');
+
+// console.log(person.fullName); // "Олекса Петренко"
+
+// person.fullName = 'Саша Іваненко';
+
+// console.log(person.firstName); // "Саша"
+// console.log(person.lastName); // "Іваненко"
+
+//! Статичні методи
+
+// class User {
+//    constructor(name, age) {
+//       this.name = name;
+//       this.age = age;
+//    }
+
+//    static compareByAge(user1, user2) {
+//       if (user1.age < user2.age) {
+//          return `${user1.name} молодший за ${user2.name}`;
+//       } else if (user1.age > user2.age) {
+//          return `${user1.name} старший за ${user2.name}`;
+//       } else {
+//          return `${user1.name} і ${user2.name} одного віку`;
+//       }
+//    }
+// }
+
+// const user1 = new User('Sasha', 36);
+// const user2 = new User('Mark', 96);
+
+// console.log(User.compareByAge(user1, user2));
+
+// class User {
+//    constructor(name, age) {
+//       this.name = name;
+//       this.age = age;
+//    }
+
+//    static oldest(value) {
+//       let oldest = value[0];
+
+//       for (let user of value) {
+//          if (user.age > oldest.age) {
+//             oldest = user;
+//          }
+//       }
+//       return oldest;
+//    }
+// }
+
+// const users = [
+//    new User('Anna', 24),
+//    new User('Bohdan', 41),
+//    new User('Ira', 33),
+// ];
+
+// console.log(User.oldest(users));
+
+// class Counter {
+//    static totalIncrements = 0;
+
+//    constructor() {
+//       this.value = 0;
+//    }
+
+//    increment() {
+//       this.value += 1;
+//       Counter.totalIncrements += 1; // 🔑 ОНОВЛЮЄМО СТАТИЧНУ ВЛАСТИВІСТЬ
+//    }
+
+//    static getTotalIncrements() {
+//       return Counter.totalIncrements;
+//    }
+// }
+
+// const c1 = new Counter();
+// const c2 = new Counter();
+
+// c1.increment(); // +1
+// c1.increment(); // +1
+// c2.increment(); // +1
+
+// console.log(Counter.getTotalIncrements()); // ✅ 3
+
+// class Counter {
+//    static totalIncrements = 0;
+
+//    constructor() {
+//       this.value = 0;
+//    }
+
+//    increment() {
+//       this.value += 1;
+//       Counter.totalIncrements += 1;
+//    }
+
+//    static getTotalIncrements() {
+//       return Counter.totalIncrements;
+//    }
+// }
+
+// const c1 = new Counter();
+// const c2 = new Counter();
+
+// c1.increment(); // +1
+// c1.increment(); // +1
+// c2.increment(); // +1
+
+// console.log(Counter.getTotalIncrements()); // має бути 3
+
+// class SecretBox {
+//    #secret;
+
+//    constructor(secret) {
+//       this.#secret = secret;
+//    }
+
+//    revealSecret() {
+//       console.log(this.#secret);
+//    }
+// }
+
+// const box = new SecretBox('🥷 Це секрет!');
+// box.revealSecret(); // 🥷 Це секрет!
+
+// // console.log(box.#secret); // ❌ Помилка: приватне поле недоступне ззовні
