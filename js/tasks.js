@@ -1203,4 +1203,171 @@
 // const box = new SecretBox('🥷 Це секрет!');
 // box.revealSecret(); // 🥷 Це секрет!
 
-// // console.log(box.#secret); // ❌ Помилка: приватне поле недоступне ззовні
+// console.log(box.#secret); // ❌ Помилка: приватне поле недоступне ззовні
+
+// class Safe {
+//    #password;
+//    #content;
+
+//    constructor(password) {
+//       this.#password = password;
+//       this.#content = null;
+//    }
+
+//    store(value, password) {
+//       if (password === this.#password) {
+//          this.#content = value;
+//       }
+//    }
+
+//    retrieve(password) {
+//       if (password === this.#password) {
+//          return this.#content;
+//       }
+//       return null;
+//    }
+// }
+
+// const mySafe = new Safe('1234');
+
+// mySafe.store('Золото', '1234');
+// console.log(mySafe.retrieve('1234')); // Золото
+
+// mySafe.store('Діаманти', '0000'); // неправильний пароль
+// console.log(mySafe.retrieve('0000')); // null
+
+// class LoginTracker {
+//    #loginCount;
+//    #password;
+
+//    constructor(password) {
+//       this.#loginCount = 0;
+//       this.#password = password;
+//    }
+
+//    login(password) {
+//       if (password === this.#password) {
+//          this.#loginCount += 1;
+//          return 'Успішний вхід';
+//       } else {
+//          return 'Доступ заборонено';
+//       }
+//    }
+
+//    getLoginCount() {
+//       return this.#loginCount;
+//    }
+// }
+
+// const tracker = new LoginTracker('pass123');
+
+// console.log(tracker.login('wrong')); // Доступ заборонено
+// console.log(tracker.login('pass123')); // Успішний вхід
+// console.log(tracker.login('pass123')); // Успішний вхід
+
+// console.log(tracker.getLoginCount()); // 2
+
+//! Функції-генератори
+
+//
+
+// function* getSquare() {
+//    for (let i = 1; i < 6; i++) {
+//       yield i * i;
+//    }
+// }
+
+// let result = getSquare();
+// console.log(result.next().value);
+// console.log(result.next().value);
+// console.log(result.next().value);
+// console.log(result.next().value);
+// console.log(result.next().value);
+
+//
+
+// function* idGenerator() {
+//    let id = 1;
+//    while (true) {
+//       yield id;
+//       id++;
+//    }
+// }
+
+// const gen = idGenerator();
+
+// console.log(gen.next().value); // 1
+// console.log(gen.next().value); // 2
+// console.log(gen.next().value); // 3
+// // і так далі...
+
+// function* passwordGenerator() {
+//    let pass = 'pass',
+//       num = 1;
+
+//    while (true) {
+//       yield pass + num;
+//       num++;
+//    }
+// }
+
+// const gen = passwordGenerator();
+// console.log(gen.next().value); // 'pass1'
+// console.log(gen.next().value); // 'pass2'
+// console.log(gen.next().value); // 'pass3'
+// console.log(gen.next().value); // 4
+// console.log(gen.next().value); // 5
+// console.log(gen.next().value); // 6
+
+// function* createUserId(prefix) {
+//    let res = prefix + '-',
+//       num = 1;
+
+//    while (true) {
+//       yield res + num;
+//       num++;
+//    }
+// }
+
+// const gen = createUserId('user');
+
+// console.log(gen.next().value); // 'user-1'
+// console.log(gen.next().value); // 'user-2'
+// console.log(gen.next().value); // 'user-3'
+
+// function* letters() {
+//    yield 'A';
+//    yield 'B';
+//    yield 'C';
+// }
+
+// function* numbers() {
+//    yield 1;
+//    yield 2;
+//    yield 3;
+// }
+
+// function* fullGenerator() {
+//    yield* letters();
+//    yield* numbers();
+// }
+
+// for (let n of fullGenerator()) {
+//    console.log(n);
+// }
+
+//!
+
+// async function* delayedMessages() {}
+async function* delayedMessages() {
+   for (let i = 1; i <= 3; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      yield `Повідомлення ${i}`;
+   }
+}
+
+(async () => {
+   for await (let mess of delayedMessages()) {
+      console.log(mess);
+   }
+})();
