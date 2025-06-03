@@ -1359,15 +1359,331 @@
 //!
 
 // async function* delayedMessages() {}
-async function* delayedMessages() {
-   for (let i = 1; i <= 3; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      yield `Повідомлення ${i}`;
-   }
+// async function* delayedMessages() {
+//    for (let i = 1; i <= 3; i++) {
+//       await new Promise((resolve) => setTimeout(resolve, 1000));
+//       yield `Повідомлення ${i}`;
+//    }
+// }
+
+// (async () => {
+//    for await (let mess of delayedMessages()) {
+//       console.log(mess);
+//    }
+// })();
+
+// function simulateDelivery() {
+//    return new Promise((resolve, reject) => {
+//       if (Math.random() > 0.5) {
+//          setTimeout(() => resolve('Замовлення доставлено!'), 2000);
+//       } else {
+//          setTimeout(() => reject('Сталася помилка доставки.'), 2000);
+//       }
+//    });
+// }
+
+// simulateDelivery()
+//    .then((message) => {
+//       console.log(message);
+//    })
+//    .catch((err) => {
+//       console.log(err);
+//    });
+
+//
+
+// function makeDough() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Тісто готове'), 1000);
+//    });
+// }
+
+// function addToppings(dough) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(`${dough} + начинка додана`), 1000);
+//    });
+// }
+
+// function bakePizza(preparedPizza) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(`${preparedPizza} => піца спечена!`), 1000);
+//    });
+// }
+
+// makeDough()
+//    .then((res1) => {
+//       console.log(res1);
+//       return addToppings(res1);
+//    })
+//    .then((res2) => {
+//       console.log(res2);
+//       return bakePizza(res2);
+//    })
+//    .then((res3) => {
+//       console.log(res3); // фінальний результат
+//    })
+//    .catch((err) => {
+//       console.log('Помилка:', err);
+//    });
+
+//
+
+// function getUser() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Користувач отриманий'), 1000);
+//    });
+// }
+
+// function getOrders() {
+//    return new Promise((_, reject) => {
+//       setTimeout(() => reject('Не вдалося отримати замовлення'), 1000);
+//    });
+// }
+
+// function showDashboard() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Панель показано'), 1000);
+//    });
+// }
+
+// getUser()
+//    .then((res1) => {
+//       console.log(res1);
+//       return getOrders(); // Тут має бути getOrders
+//    })
+//    .then((res2) => {
+//       console.log(res2);
+//       return showDashboard(); // Виконується тільки якщо не було помилки в getOrders
+//    })
+//    .then((res3) => {
+//       console.log(res3);
+//    })
+//    .catch((err) => {
+//       console.log('Сталася помилка:', err);
+//    });
+
+// function wash() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Машину помито'), 1000);
+//    });
+// }
+
+// function polish(prev) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(prev + ' ➡ Поліровано'), 1000);
+//    });
+// }
+
+// function wax(prev) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(prev + ' ➡ Навощено'), 1000);
+//    });
+// }
+
+// wash()
+//    .then((res1) => {
+//       return polish(res1);
+//    })
+//    .then((res2) => {
+//       return wax(res2);
+//    })
+//    .then((res3) => {
+//       console.log(res3);
+//    })
+//    .catch((err) => {
+//       console.log(`Помилка ${err}`);
+//    })
+//    .finally(() => {
+//       console.log('Кінець!');
+//    });
+
+// variant 2
+
+// async function carService() {
+//    try {
+//       const res1 = await wash();
+//       const res2 = await polish(res1);
+//       const res3 = await wax(res2);
+//       console.log(res3);
+//    } catch (err) {
+//       console.log(`Помилка ${err}`);
+//    } finally {
+//       console.log('Кінець!');
+//    }
+// }
+
+// carService();
+
+//
+
+// function placeOrder() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Нове замовлення'), 1000);
+//    });
+// }
+
+// function prepareFood(order) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(`${order} → їжа готова`), 1000);
+//    });
+// }
+
+// function deliverFood(food) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve(`${food} → доставлено`), 1000);
+//    });
+// }
+
+// async function processOrder() {
+//    try {
+//       const order = await placeOrder();
+//       console.log(order);
+
+//       const food = await prepareFood(order);
+//       console.log(food);
+
+//       const confirmation = await deliverFood(food);
+//       console.log(confirmation);
+//    } catch (err) {
+//       console.log(`Сталася помилка: ${err}`);
+//    } finally {
+//       console.log('Процес завершено.');
+//    }
+// }
+
+// processOrder();
+
+// // placeOrder()
+// //    .then((order) => {
+// //       console.log(order);
+// //       return prepareFood(order);
+// //    })
+// //    .then((food) => {
+// //       console.log(food);
+// //       return prepareFood(food);
+// //    })
+// //    .then((confirmation) => {
+// //       console.log(confirmation);
+// //    })
+// //    .catch((err) => {
+// //       console.log(`Сталася помилка: ${err}`);
+// //    })
+// //    .finally(() => {
+// //       console.log('Процес завершено.');
+// //    });
+
+//
+
+// function placeBookOrder() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => {
+//          const msg = 'Книга замовлена';
+//          console.log(msg);
+//          resolve(msg);
+//       }, 1000);
+//    });
+// }
+
+// function checkStock(order) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => {
+//          const inStock = Math.random() > 0.5;
+//          const msg = inStock ? 'Книга в наявності' : 'Книги немає';
+//          console.log(msg);
+//          resolve(msg);
+//       }, 1000);
+//    });
+// }
+
+// function shipOrder(status) {
+//    return new Promise((resolve) => {
+//       setTimeout(() => {
+//          const msg = 'Замовлення відправлено';
+//          console.log(msg);
+//          resolve(msg);
+//       }, 1000);
+//    });
+// }
+
+// async function processBookOrder() {
+//    try {
+//       const order = await placeBookOrder();
+//       const check = await checkStock(order);
+//       if (check === 'Книги немає') throw 'Немає книги';
+//       const ship = await shipOrder(check);
+//    } catch (err) {
+//       console.log(`Сталася помилка: ${err}`);
+//    } finally {
+//       console.log('Процес завершено.');
+//    }
+// }
+
+// processBookOrder();
+
+//
+
+// function getDrink() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Напій'), 1000);
+//    });
+// }
+
+// function getBurger() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Бургер'), 1500);
+//    });
+// }
+
+// function getFries() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Картопля'), 2000);
+//    });
+// }
+
+// Promise.all([getDrink(), getBurger(), getFries()]).then((results) =>
+//    console.log(`Ваше замовлення: ${results.join(', ')}`)
+// );
+
+//
+
+function getTea() {
+   return new Promise((resolve) => {
+      setTimeout(
+         () => resolve('Першим приготували: чай'),
+         Math.floor(Math.random() * 3000)
+      );
+   });
 }
 
-(async () => {
-   for await (let mess of delayedMessages()) {
-      console.log(mess);
-   }
-})();
+function getCoffee() {
+   return new Promise((resolve) => {
+      setTimeout(
+         () => resolve('Першою приготували: каву'),
+         Math.floor(Math.random() * 3000)
+      );
+   });
+}
+
+function getJuice() {
+   return new Promise((resolve) => {
+      setTimeout(
+         () => resolve('Першим приготували: сік'),
+         Math.floor(Math.random() * 3000)
+      );
+   });
+}
+
+function getMilkshake() {
+   return new Promise((_, reject) => {
+      setTimeout(
+         () => reject('Молочний коктейль закінчився 😢'),
+         Math.floor(Math.random() * 3000)
+      );
+   });
+}
+
+Promise.race([getTea(), getCoffee(), getJuice(), getMilkshake()])
+   .then((res) => {
+      console.log(res);
+   })
+   .catch((err) => console.log('Помилка:', err));
