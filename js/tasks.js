@@ -1646,44 +1646,180 @@
 
 //
 
-function getTea() {
-   return new Promise((resolve) => {
-      setTimeout(
-         () => resolve('Першим приготували: чай'),
-         Math.floor(Math.random() * 3000)
-      );
-   });
+// function getTea() {
+//    return new Promise((resolve) => {
+//       setTimeout(
+//          () => resolve('Першим приготували: чай'),
+//          Math.floor(Math.random() * 3000)
+//       );
+//    });
+// }
+
+// function getCoffee() {
+//    return new Promise((resolve) => {
+//       setTimeout(
+//          () => resolve('Першою приготували: каву'),
+//          Math.floor(Math.random() * 3000)
+//       );
+//    });
+// }
+
+// function getJuice() {
+//    return new Promise((resolve) => {
+//       setTimeout(
+//          () => resolve('Першим приготували: сік'),
+//          Math.floor(Math.random() * 3000)
+//       );
+//    });
+// }
+
+// function getMilkshake() {
+//    return new Promise((_, reject) => {
+//       setTimeout(
+//          () => reject('Молочний коктейль закінчився 😢'),
+//          Math.floor(Math.random() * 3000)
+//       );
+//    });
+// }
+
+// Promise.race([getTea(), getCoffee(), getJuice(), getMilkshake()])
+//    .then((res) => {
+//       console.log(res);
+//    })
+//    .catch((err) => console.log('Помилка:', err));
+
+//
+
+// function loadProfile() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Профіль завантажено'), 1000);
+//    });
+// }
+
+// function loadPosts() {
+//    return new Promise((_, reject) => {
+//       setTimeout(() => reject('Помилка при завантаженні постів'), 1500);
+//    });
+// }
+
+// function loadFriends() {
+//    return new Promise((resolve) => {
+//       setTimeout(() => resolve('Список друзів завантажено'), 2000);
+//    });
+// }
+
+// Promise.allSettled([loadProfile(), loadPosts(), loadFriends()]).then(
+//    (results) => {
+//       results.forEach((result) => {
+//          if (result.status === 'fulfilled') {
+//             console.log(`✅ Успішно: ${result.value}`);
+//          } else {
+//             console.log(`❌ Відхилено: ${result.reason}`);
+//          }
+//       });
+//    }
+// );
+
+//
+
+// const server1 = new Promise((_, reject) =>
+//    setTimeout(() => reject('Сервер 1 недоступний'), 1000)
+// );
+
+// const server2 = new Promise((resolve) =>
+//    setTimeout(() => resolve('Дані з сервера 2'), 1500)
+// );
+
+// const server3 = new Promise((resolve) =>
+//    setTimeout(() => resolve('Дані з сервера 3'), 2000)
+// );
+
+// Promise.any([server1, server2, server3])
+//    .then((res) => {
+//       console.log(`✅ Отримано: ${res}`);
+//    })
+//    .catch((err) => {
+//       console.log(`❌ Усі сервери дали помилку: ${err}`);
+//    });
+
+//
+
+// const getCake = new Promise((_, reject) => {
+//    setTimeout(() => {
+//       // resolve('Печиво отримано!');
+//       reject('Помилка! Щось пішло не так!');
+//    }, 1000);
+// });
+
+// const getPie = new Promise((_, reject) => {
+//    setTimeout(() => {
+//       reject('Помилка! Щось пішло не так!');
+//    }, 2000);
+// });
+
+// const getDonut = new Promise((_, reject) => {
+//    setTimeout(() => {
+//       // resolve('Пончик отримано!');
+//       reject('Помилка! Щось пішло не так!');
+//    }, 3000);
+// });
+
+// Promise.any([getCake, getPie, getDonut])
+//    .then((res) => {
+//       console.log(res);
+//    })
+//    .catch((err) => {
+//       if (err instanceof AggregateError) {
+//          err.errors.forEach((e) => console.log(`❌ ${e}`));
+//       }
+//    });
+
+//
+
+// async function* getMessages() {
+//    yield 'Повідомлення 1';
+//    await new Promise((res) => setTimeout(res, 1000));
+//    yield 'Повідомлення 2';
+//    await new Promise((res) => setTimeout(res, 1000));
+//    yield 'Повідомлення 3';
+// }
+
+// (async () => {
+//    for await (const msg of getMessages()) {
+//       console.log(msg);
+//    }
+// })();
+
+//
+
+// const promises = [
+//    Promise.resolve('🍎 Яблуко'),
+//    new Promise((resolve) => setTimeout(() => resolve('🍌 Банан'), 1000)),
+//    Promise.resolve('🍒 Вишня'),
+// ];
+
+// async function getFruits() {
+//    for await (const fruit of promises) {
+//       console.log(fruit);
+//    }
+//    console.log('✅ Усі фрукти оброблено!');
+// }
+
+// getFruits();
+
+//
+
+const userRequests = [
+   new Promise((res) => setTimeout(() => res('👤 Користувач 1'), 1500)),
+   new Promise((res) => setTimeout(() => res('👤 Користувач 2'), 500)),
+   new Promise((res) => setTimeout(() => res('👤 Користувач 3'), 1000)),
+];
+
+async function fetchUsers() {
+   for await (const user of userRequests) {
+      console.log(user);
+   }
+   console.log('✅ Усі користувачі отримані!');
 }
 
-function getCoffee() {
-   return new Promise((resolve) => {
-      setTimeout(
-         () => resolve('Першою приготували: каву'),
-         Math.floor(Math.random() * 3000)
-      );
-   });
-}
-
-function getJuice() {
-   return new Promise((resolve) => {
-      setTimeout(
-         () => resolve('Першим приготували: сік'),
-         Math.floor(Math.random() * 3000)
-      );
-   });
-}
-
-function getMilkshake() {
-   return new Promise((_, reject) => {
-      setTimeout(
-         () => reject('Молочний коктейль закінчився 😢'),
-         Math.floor(Math.random() * 3000)
-      );
-   });
-}
-
-Promise.race([getTea(), getCoffee(), getJuice(), getMilkshake()])
-   .then((res) => {
-      console.log(res);
-   })
-   .catch((err) => console.log('Помилка:', err));
+fetchUsers();
