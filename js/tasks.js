@@ -1809,17 +1809,142 @@
 
 //
 
-const userRequests = [
-   new Promise((res) => setTimeout(() => res('👤 Користувач 1'), 1500)),
-   new Promise((res) => setTimeout(() => res('👤 Користувач 2'), 500)),
-   new Promise((res) => setTimeout(() => res('👤 Користувач 3'), 1000)),
-];
+// const userRequests = [
+//    new Promise((res) => setTimeout(() => res('👤 Користувач 1'), 1500)),
+//    new Promise((res) => setTimeout(() => res('👤 Користувач 2'), 500)),
+//    new Promise((res) => setTimeout(() => res('👤 Користувач 3'), 1000)),
+// ];
 
-async function fetchUsers() {
-   for await (const user of userRequests) {
-      console.log(user);
-   }
-   console.log('✅ Усі користувачі отримані!');
-}
+// async function fetchUsers() {
+//    for await (const user of userRequests) {
+//       console.log(user);
+//    }
+//    console.log('✅ Усі користувачі отримані!');
+// }
 
-fetchUsers();
+// fetchUsers();
+
+//
+
+// for (let i = 0; i < 10; i++) {
+//    setTimeout(() => {
+//       console.log(i);
+//    }, 1000);
+// }
+
+//! Event loop
+
+// console.log('A');
+
+// setTimeout(() => {
+//    console.log('B');
+// }, 0);
+
+// Promise.resolve().then(() => {
+//    console.log('C');
+//    queueMicrotask(() => console.log('D'));
+// });
+
+// queueMicrotask(() => {
+//    console.log('E');
+// });
+
+// console.log('F');
+
+//
+
+// console.log('1');
+
+// queueMicrotask(() => {
+//    console.log('2');
+// });
+
+// setTimeout(() => {
+//    console.log('3');
+//    Promise.resolve().then(() => console.log('4'));
+// }, 0);
+
+// Promise.resolve().then(() => {
+//    console.log('5');
+//    setTimeout(() => console.log('6'), 0);
+// });
+
+// console.log('7');
+
+//
+// async function test() {
+//    console.log('1');
+
+//    await Promise.resolve();
+
+//    console.log('2');
+// }
+
+// test();
+
+// console.log('3');
+
+//
+
+// console.log('1');
+
+// setTimeout(() => {
+//    console.log('2');
+// }, 0);
+
+// Promise.resolve().then(() => {
+//    console.log('3');
+// });
+
+// queueMicrotask(() => {
+//    console.log('4');
+// });
+
+// console.log('5');
+
+//
+
+// console.log('Start');
+
+// setTimeout(() => {
+//    console.log('Timeout');
+// }, 0);
+
+// Promise.resolve()
+//    .then(() => {
+//       console.log('Promise 1');
+//    })
+//    .then(() => {
+//       console.log('Promise 2');
+//    });
+
+// queueMicrotask(() => {
+//    console.log('Microtask');
+// });
+
+// console.log('End');
+
+//
+
+console.log('1');
+
+setTimeout(() => {
+   console.log('2');
+}, 0);
+
+Promise.resolve()
+   .then(() => {
+      console.log('3');
+      queueMicrotask(() => {
+         console.log('4');
+      });
+   })
+   .then(() => {
+      console.log('5');
+   });
+
+queueMicrotask(() => {
+   console.log('6');
+});
+
+console.log('7');
