@@ -1926,25 +1926,93 @@
 
 //
 
-console.log('1');
+// console.log('1');
 
-setTimeout(() => {
-   console.log('2');
-}, 0);
+// setTimeout(() => {
+//    console.log('2');
+// }, 0);
 
-Promise.resolve()
-   .then(() => {
-      console.log('3');
-      queueMicrotask(() => {
-         console.log('4');
-      });
-   })
-   .then(() => {
-      console.log('5');
-   });
+// Promise.resolve()
+//    .then(() => {
+//       console.log('3');
+//       queueMicrotask(() => {
+//          console.log('4');
+//       });
+//    })
+//    .then(() => {
+//       console.log('5');
+//    });
 
-queueMicrotask(() => {
-   console.log('6');
-});
+// queueMicrotask(() => {
+//    console.log('6');
+// });
 
-console.log('7');
+// console.log('7');
+
+//
+
+// let a = prompt();
+
+// switch (a) {
+//    case '1':
+//       alert('Січень');
+//       break;
+//    case '2':
+//       alert('Лютий');
+//       break;
+//    case '3':
+//       alert('Березень');
+//       break;
+//    case '4':
+//       alert('Квітень');
+//       break;
+//    case '5':
+//       alert('Травень');
+//       break;
+//    case '6':
+//       alert('Червень');
+//       break;
+//    case '7':
+//       alert('Липень');
+//       break;
+//    case '8':
+//       alert('Серпень');
+//       break;
+//    case '9':
+//       alert('Вересень');
+//       break;
+//    case '10':
+//       alert('Жовтеь');
+//       break;
+//    case '11':
+//       alert('Листопад');
+//       break;
+//    case '12':
+//       alert('Грудень');
+//       break;
+//    default:
+//       alert('Місяць введено не вірно!');
+//       break;
+// }
+
+//
+
+// let a = prompt();
+
+// // console.log(a);
+// // console.log(typeof a);
+// // console.log(a.length);
+
+// if (a.length < 3) {
+//    alert('Ви ввели занадто коротке число! Має бути 3-значне!');
+// } else if (a.length > 3) {
+//    alert('Ви ввели занадто довге число! Має бути 3-значне!');
+// } else if (!isNaN(a) && a.length == 3) {
+//    let digits = a.split(''),
+//       b = 0;
+//    console.log(digits);
+//    digits.map((item) => {
+//       b += Number(item);
+//    });
+//    alert(b);
+// }
