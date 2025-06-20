@@ -2016,3 +2016,104 @@
 //    });
 //    alert(b);
 // }
+
+// console.log('1');
+
+// setTimeout(() => {
+//    console.log('2');
+// }, 0);
+
+// Promise.resolve().then(() => {
+//    console.log('3');
+// });
+
+// queueMicrotask(() => {
+//    console.log('4');
+// });
+
+// console.log('5');
+
+//
+
+// document.getElementById('menu').addEventListener('click', function (event) {
+//    if (event.target.tagName === 'LI') {
+//       console.log(`Ви клікнули на: ${event.target.textContent}`);
+//    }
+// });
+
+// const buttons = document.getElementById('buttons');
+// const box = document.getElementById('box');
+
+// buttons.addEventListener('click', function (event) {
+//    const color = event.target.dataset.color;
+
+//    if (color) {
+//       console.log(`Ви клікнули на: ${event.target.textContent}`);
+//       box.style.background = color;
+//    }
+// });
+
+//
+
+// const taskInput = document.getElementById('taskInput');
+// const addBtn = document.getElementById('addBtn');
+// const taskList = document.getElementById('taskList');
+
+// addBtn.addEventListener('click', () => {
+//    const li = document.createElement('li');
+//    li.innerHTML = `
+//       ${taskInput.value}
+//       <button class="remove-btn">Видалити</button>
+//    `;
+//    taskList.appendChild(li);
+//    taskInput.value = '';
+// });
+
+// // Делегування!
+// taskList.addEventListener('click', (event) => {
+//    if (event.target.classList.contains('remove-btn')) {
+//       event.target.closest('li').remove();
+//    }
+// });
+
+// document.getElementById('outer').addEventListener('click', () => {
+//    console.log('🔵 OUTER bubbling');
+// });
+
+// document.getElementById('outer').addEventListener(
+//    'click',
+//    () => {
+//       console.log('🟣 OUTER capturing (once)');
+//    },
+//    { capture: true, once: true }
+// );
+
+// document.getElementById('middle').addEventListener('click', () => {
+//    console.log('🟢 MIDDLE bubbling');
+// });
+
+// document.getElementById('inner').addEventListener('click', (event) => {
+//    console.log('🟠 INNER');
+//    event.stopPropagation();
+// });
+
+//
+
+document
+   .getElementById('outer')
+   .addEventListener('click', () => console.log('🟢 OUTER bubbling'), {
+      once: true,
+   });
+
+document.getElementById('middle').addEventListener(
+   'click',
+   (e) => {
+      console.log('🔵 MIDDLE capturing');
+      e.stopPropagation();
+   },
+   { capture: true }
+);
+
+document
+   .getElementById('inner')
+   .addEventListener('click', () => console.log('🟠 INNER'));
