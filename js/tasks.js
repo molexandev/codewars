@@ -2097,23 +2097,100 @@
 //    event.stopPropagation();
 // });
 
+//! Спливання подій
+
+// document.getElementById('outer').addEventListener('click', () => {
+//    console.log('🟡 OUTER bubbling');
+// });
+
+// document.getElementById('middle').addEventListener(
+//    'click',
+//    () => {
+//       console.log('🔵 MIDDLE capturing');
+//    },
+//    { capture: true }
+// );
+
+// document.getElementById('inner').addEventListener('click', () => {
+//    console.log('🔴 INNER clicked');
+// });
+
 //
 
-document
-   .getElementById('outer')
-   .addEventListener('click', () => console.log('🟢 OUTER bubbling'), {
-      once: true,
-   });
+// function test() {
+//    console.log(x); // ?
+//    if (true) {
+//       var x = 10;
+//    }
+//    console.log(x); // ?
+// }
 
-document.getElementById('middle').addEventListener(
-   'click',
-   (e) => {
-      console.log('🔵 MIDDLE capturing');
-      e.stopPropagation();
-   },
-   { capture: true }
-);
+// test();
 
-document
-   .getElementById('inner')
-   .addEventListener('click', () => console.log('🟠 INNER'));
+//! Замикання (ще раз)
+
+// function createSecretHolder(secret) {
+//    return {
+//       getSecret() {
+//          return secret;
+//       },
+//       setSecret(value) {
+//          secret = value;
+//       },
+//    };
+// }
+// const holder = createSecretHolder('🔐 Початковий секрет');
+
+// console.log(holder.getSecret()); // '🔐 Початковий секрет'
+
+// holder.setSecret('🧪 Новий секрет');
+// console.log(holder.getSecret()); // '🧪 Новий секрет'
+// holder.setSecret('🧪 Ще один секрет');
+// console.log(holder.getSecret()); // '🧪 Новий секрет'
+
+//! Що таке DOM?
+
+// const title = document.getElementById('title');
+// const btn = document.querySelector('button');
+
+// btn.textContent = 'Натиснуто!';
+
+// console.log(title);
+// console.log(btn);
+
+//
+
+// const btn = document.querySelector('.btn');
+
+// btn.addEventListener('click', () => {
+//    const newP = document.createElement('p');
+//    newP.textContent = 'Новий абзац додано!';
+//    document.body.append(newP);
+// });
+
+//
+
+// const btn = document.querySelector('.btn');
+// let counter = 0;
+
+// btn.addEventListener('click', () => {
+//    counter++;
+//    const newParagraph = document.createElement('p');
+//    newParagraph.textContent = `📩 Нове повідомлення ${counter}`;
+//    document.body.append(newParagraph);
+// });
+
+//
+
+const lightBtn = document.getElementById('lightBtn'),
+   darkBtn = document.getElementById('darkBtn');
+
+lightBtn.addEventListener('click', () => {
+   document.body.style.backgroundColor = '#fff';
+   document.body.style.color = '#000';
+});
+
+darkBtn.addEventListener('click', () => {
+   document.body.style.backgroundColor = '#333';
+   document.body.style.color = '#fff';
+});
