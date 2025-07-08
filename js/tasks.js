@@ -2182,15 +2182,44 @@
 
 //
 
-const lightBtn = document.getElementById('lightBtn'),
-   darkBtn = document.getElementById('darkBtn');
+// const lightBtn = document.getElementById('lightBtn'),
+//    darkBtn = document.getElementById('darkBtn');
 
-lightBtn.addEventListener('click', () => {
-   document.body.style.backgroundColor = '#fff';
-   document.body.style.color = '#000';
+// lightBtn.addEventListener('click', () => {
+//    document.body.style.backgroundColor = '#fff';
+//    document.body.style.color = '#000';
+// });
+
+// darkBtn.addEventListener('click', () => {
+//    document.body.style.backgroundColor = '#333';
+//    document.body.style.color = '#fff';
+// });
+
+//! Зміна теми
+
+const btn = document.getElementById('btn-theme');
+
+btn.addEventListener('click', () => {
+   if (document.body.classList.contains('light')) {
+      document.body.classList.remove('light');
+      document.body.classList.add('dark');
+   } else {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+   }
 });
 
-darkBtn.addEventListener('click', () => {
-   document.body.style.backgroundColor = '#333';
-   document.body.style.color = '#fff';
+//
+
+const buttonAdd = document.getElementById('btn');
+buttonAdd.addEventListener('click', () => {
+   const img = document.createElement('img');
+   img.setAttribute(
+      'src',
+      'https://images.wallpaperscraft.ru/image/single/domik_zima_sneg_134709_1920x1080.jpg'
+   );
+   img.setAttribute('alt', 'засніжений будинок');
+   img.style.width = '200px';
+
+   document.body.append(img);
 });
