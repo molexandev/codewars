@@ -1,5 +1,7 @@
 'use strict';
 
+// const { createElement } = require('react');
+
 //! Завдання для підготовки до співбесіди
 
 // TODO Напиши функцію getUserPosts(userId), яка: Приймає userId (число) як аргумент.Завантажує пости користувача з API: https://jsonplaceholder.typicode.com/posts?userId=USER_ID Виводить у консоль заголовки постів цього користувача (властивість title).
@@ -2148,7 +2150,7 @@
 // holder.setSecret('🧪 Ще один секрет');
 // console.log(holder.getSecret()); // '🧪 Новий секрет'
 
-//! Що таке DOM?
+//! Робота з DOM?
 
 // const title = document.getElementById('title');
 // const btn = document.querySelector('button');
@@ -2197,9 +2199,9 @@
 
 //! Зміна теми
 
-const btn = document.getElementById('btn-theme');
+const btnTheme = document.getElementById('btn-theme');
 
-btn.addEventListener('click', () => {
+btnTheme.addEventListener('click', () => {
    if (document.body.classList.contains('light')) {
       document.body.classList.remove('light');
       document.body.classList.add('dark');
@@ -2209,9 +2211,9 @@ btn.addEventListener('click', () => {
    }
 });
 
-//
+//! Додавання зображення
 
-const buttonAdd = document.getElementById('btn');
+const buttonAdd = document.getElementById('btn-add-image');
 buttonAdd.addEventListener('click', () => {
    const img = document.createElement('img');
    img.setAttribute(
@@ -2222,4 +2224,102 @@ buttonAdd.addEventListener('click', () => {
    img.style.width = '200px';
 
    document.body.append(img);
+});
+
+//
+
+// const toggleBtn = document.getElementById('toggleBtn'),
+//    box = document.getElementById('box');
+
+// toggleBtn.addEventListener('click', () => {
+//    box.classList.toggle('highlight');
+// });
+
+//
+
+// const btn = document.getElementById('btn'),
+//    heading = document.getElementById('title'),
+//    pic = document.getElementById('pic');
+
+// btn.addEventListener('click', () => {
+//    heading.textContent = 'Текст змінено!';
+//    pic.style.width = '100px';
+//    pic.setAttribute('title', 'Натисни ще раз');
+// });
+
+//
+
+// const removeBtn = document.getElementById('removeBtn'),
+//    pic = document.getElementById('pic');
+
+// removeBtn.addEventListener('click', () => {
+//    pic.remove();
+// });
+
+//
+
+// const addBtn = document.getElementById('addBtn'),
+//    ref = document.getElementById('ref');
+
+// let isFirst = true;
+
+// addBtn.addEventListener('click', () => {
+//    const newP = document.createElement('p');
+//    newP.textContent = '🟢 Новий елемент';
+
+//    if (isFirst) {
+//       ref.before(newP);
+//       isFirst = false;
+//    } else {
+//       ref.after(newP);
+//    }
+// });
+
+//
+
+// const title = document.getElementById('title'),
+//    list = document.getElementById('list'),
+//    btnAdd = document.getElementById('add');
+// let count = 0;
+
+// btnAdd.addEventListener('click', () => {
+//    count++;
+//    list.insertAdjacentHTML('beforeend', `<li>📦 Товар ${count}</li>`);
+// });
+
+//
+
+// const list = document.getElementById('list'),
+//    btnAdd = document.getElementById('remove');
+
+// btnAdd.addEventListener('click', () => {
+//    if (list.lastElementChild) {
+//       list.lastElementChild.remove();
+//    } else {
+//       console.log('Список порожній');
+//    }
+// });
+
+//
+
+// const list = document.getElementById('list');
+// const btnRem = document.getElementById('remove');
+
+// btnRem.addEventListener('click', () => {
+//    if (list.children.length === 0) {
+//       console.log('Список уже порожній');
+//    } else {
+//       list.innerHTML = '';
+//       console.log('Список очищено');
+//    }
+// });
+
+//
+
+const btnToggle = document.getElementById('toggle');
+const square = document.getElementById('square');
+console.log(square);
+
+btnToggle.addEventListener('click', () => {
+   square.classList.toggle('large');
 });

@@ -65,3 +65,25 @@ button {
    color: #fff;
    transition: all 0.2s;
 }
+.btn-theme {
+   margin-top: 150px;
+}
+
+.highlight {
+   background-color: yellow;
+   padding: 10px;
+}
+
+/**/
+
+.square {
+   width: 100px;
+   height: 100px;
+   background-color: blue;
+}
+
+.square.large {
+   width: 200px;
+   height: 200px;
+   background-color: orange;
+}
