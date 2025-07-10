@@ -2316,10 +2316,56 @@ buttonAdd.addEventListener('click', () => {
 
 //
 
-const btnToggle = document.getElementById('toggle');
-const square = document.getElementById('square');
-console.log(square);
+// const btnToggle = document.getElementById('toggle');
+// const square = document.getElementById('square');
+// console.log(square);
 
-btnToggle.addEventListener('click', () => {
-   square.classList.toggle('large');
+// btnToggle.addEventListener('click', () => {
+//    square.classList.toggle('large');
+// });
+
+//
+
+// const list = document.getElementById('list'),
+//    parentElement = list.parentElement,
+//    firstElementChild = list.firstElementChild,
+//    nextElementSibling = list.firstElementChild.nextElementSibling,
+//    previousElementSibling = list.lastElementChild.previousElementSibling;
+
+// console.log(parentElement);
+// console.log(firstElementChild);
+// console.log(nextElementSibling);
+// console.log(previousElementSibling);
+
+//! Типи подій в DOM
+
+// document.body.addEventListener('keydown', (e) => {
+//    console.log(e);
+// });
+
+// document.addEventListener('keydown', (e) => {
+//    console.log(`Натиснуто клавішу: ${e.key}`);
+// });
+
+//
+
+// const input = document.getElementById('nameInput');
+
+// input.addEventListener('input', (e) => {
+//    console.log(e.target.value);
+// });
+
+//
+
+const select = document.getElementById('country');
+select.addEventListener('change', (e) => {
+   const selectedText = select.options[select.selectedIndex].textContent;
+   console.log(`Ви обрали: ${selectedText}`);
+});
+
+const form = document.getElementById('nameForm');
+form.addEventListener('submit', (e) => {
+   e.preventDefault();
+   const username = form.username.value;
+   console.log(`Дані форми: ${username}`);
 });
