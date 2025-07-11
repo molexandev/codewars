@@ -2357,15 +2357,134 @@ buttonAdd.addEventListener('click', () => {
 
 //
 
-const select = document.getElementById('country');
-select.addEventListener('change', (e) => {
-   const selectedText = select.options[select.selectedIndex].textContent;
-   console.log(`Ви обрали: ${selectedText}`);
-});
+// const select = document.getElementById('country');
+// select.addEventListener('change', (e) => {
+//    const selectedText = select.options[select.selectedIndex].textContent;
+//    console.log(`Ви обрали: ${selectedText}`);
+// });
 
-const form = document.getElementById('nameForm');
-form.addEventListener('submit', (e) => {
+// const form = document.getElementById('nameForm');
+// form.addEventListener('submit', (e) => {
+//    e.preventDefault();
+//    const username = form.username.value;
+//    console.log(`Дані форми: ${username}`);
+// });
+
+//
+
+// const form = document.getElementById('nameForm');
+// form.addEventListener('submit', (e) => {
+//    e.preventDefault();
+//    const useremail = form.useremail.value;
+//    let input = form.useremail;
+//    if (useremail.includes('@')) {
+//       input.style.border = '3px solid green';
+//       console.log(`Дякуємо за підписку!`);
+//    } else {
+//       input.style.border = '3px solid red';
+//       console.log('Ваш email має містити символ "@"!');
+//    }
+// });
+
+//
+
+// const form = document.getElementById('nameForm');
+// const input = form.entoresc;
+
+// input.addEventListener('keydown', (e) => {
+//    e.preventDefault();
+
+//    if (e.key === 'Enter') {
+//       console.log('Ви підтвердили введення');
+//    } else if (e.key === 'Escape') {
+//       console.log('Введення скасовано');
+//    }
+// });
+
+//
+
+// const form = document.getElementById('nameForm');
+// form.addEventListener('submit', (e) => {
+//    e.preventDefault();
+
+//    let inputUser = form.username;
+//    let userLastname = form.userlastname;
+//    let inputEmail = form.useremail;
+
+//    const allFieldsFilled =
+//       inputUser.value.trim() &&
+//       userLastname.value.trim() &&
+// inputEmail.value.trim();
+
+//    if (allFieldsFilled.length > 0) {
+//       inputEmail.style.border = '3px solid green';
+//       console.log(
+//          `Дякуємо за підписку! Ваше ім'я: ${inputUser.value}, Прізвище: ${userLastname.value}, Email: ${inputEmail.value}`
+//       );
+//    } else {
+//       inputEmail.style.border = '3px solid red';
+//       console.log('Заповніть усі поля!');
+//    }
+// });
+
+//! Делегування подій для динамічних елементів
+
+// const productList = document.getElementById('productList'),
+//    addProduct = document.getElementById('addProduct'),
+//    products = document.getElementById('products');
+// let count = 0;
+
+// productList.addEventListener('click', (e) => {
+//    e.preventDefault();
+
+//    const newLi = document.createElement('li');
+//    if (e.target.id == 'addProduct') {
+//       count++;
+//       newLi.setAttribute('id', `${count}`);
+
+//       newLi.textContent = `Товар ${count}`;
+
+//       products.append(newLi);
+
+//       return;
+//    }
+//    if (e.target.tagName.toLowerCase() === 'li') {
+//       console.log(`Ви обрали товар № ${e.target.id}`);
+//    }
+// });
+
+//
+
+const products = document.getElementById('wrapper'),
+   addProduct = document.getElementById('addProduct'),
+   productList = document.getElementById('productList');
+let count = 0;
+
+products.addEventListener('click', (e) => {
    e.preventDefault();
-   const username = form.username.value;
-   console.log(`Дані форми: ${username}`);
+
+   const newLi = document.createElement('li');
+   newLi.style.display = 'flex';
+   newLi.style.justifyContent = 'space-between';
+   newLi.style.alignItems = 'center';
+   const deleteProduct = document.createElement('button');
+
+   if (e.target.id == 'addProduct') {
+      count++;
+      newLi.setAttribute('id', `${count}`);
+      deleteProduct.setAttribute('id', `${count}`);
+      deleteProduct.textContent = '❌ Видалити товар';
+
+      newLi.textContent = `Товар ${count}`;
+      newLi.append(deleteProduct);
+
+      productList.append(newLi);
+
+      return;
+   }
+
+   if (e.target.tagName.toUpperCase() === 'BUTTON') {
+      productList.removeChild();
+      console.log(`Ви видалили товар № ${e.target.id}`);
+   }
 });
