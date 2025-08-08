@@ -2809,3 +2809,152 @@ products.addEventListener('click', (e) => {
 // console.log(inc());
 // console.log(inc());
 // console.log(inc());
+
+//
+
+// function a() {
+//    let first = 'a';
+//    function b() {
+//       let second = 'b';
+//       function c() {
+//          let third = 'c';
+//          console.log(first, second, third);
+//       }
+//       c();
+//    }
+//    b();
+// }
+
+// a();
+
+//
+
+// let a = 10;
+
+// function out() {
+//    let a = 20;
+//    console.log(a); // 20
+// }
+// out();
+
+//
+
+// let x = 5;
+
+// function foo() {
+//    console.log(x);
+// }
+
+// function bar() {
+//    let x = 10;
+//    foo();
+// }
+
+// bar();
+
+//
+
+// function outer() {
+//    let count = 0;
+//    function inner() {
+//       count++;
+//       console.log(count);
+//    }
+//    return inner;
+// }
+
+// const fn1 = outer();
+// const fn2 = outer();
+
+// fn1();
+// fn1();
+// fn2();
+
+//
+
+// let z = 1;
+
+// {
+//    let z = 2;
+//    {
+//       let z = 3;
+//       console.log(z);
+//    }
+//    console.log(z);
+// }
+// console.log(z);
+
+//
+
+// function makeMultiplier(multiplier) {
+//    return function (x) {
+//       return x * multiplier;
+//    };
+// }
+
+// const double = makeMultiplier(2);
+// const triple = makeMultiplier(3);
+
+// console.log(double(5));
+// console.log(triple(5));
+
+//
+
+// function makeAdder(x) {
+//    return function (y) {
+//       return x + y;
+//    };
+// }
+
+// const add5 = makeAdder(5);
+// const add10 = makeAdder(10);
+
+// console.log(add5(2));
+// console.log(add10(2));
+// console.log(add5(10));
+
+//
+
+// function once(fn) {
+//    let called = false;
+//    let result;
+//    return function (...args) {
+//       if (!called) {
+//          result = fn(...args);
+//          called = true;
+//       }
+//       return result;
+//    };
+// }
+
+// const logOnce = once((msg) => {
+//    console.log('LOG:', msg);
+//    return msg.length;
+// });
+
+// console.log(logOnce('hello'));
+// console.log(logOnce('world'));
+
+//
+
+// function tricky() {
+//    let secret = 'hidden';
+//    return {
+//       getSecret: () => secret,
+//       setSecret: (newValue) => {
+//          secret = newValue;
+//       },
+//    };
+// }
+
+// const obj = tricky();
+// obj.setSecret('changed');
+// console.log(obj.getSecret());
+
+//
+
+// for (var i = 0; i < 3; i++) {
+//    setTimeout(() => console.log(i), 100);
+// }
+
+//
