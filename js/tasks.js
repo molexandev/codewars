@@ -2455,6 +2455,220 @@ buttonAdd.addEventListener('click', () => {
 
 //
 
+//
+// function doubleArray(arr) {
+//    let newArr = arr.map((item) => {
+//       return item * 2;
+//    });
+//    return newArr;
+// }
+
+// console.log(doubleArray([1, 2, 3])); // [2, 4, 6]
+
+// function doClousure() {
+//    let counter = 0;
+//    return function () {
+//       counter++;
+//       return counter;
+//    };
+// }
+
+// let out = doClousure();
+
+// console.log(out());
+// console.log(out());
+// console.log(out());
+
+//
+
+// const promise = new Promise((resolve, reject) => {
+//    setTimeout(() => {
+//       resolve('Done!');
+//    }, 1000);
+// });
+
+// promise.then((res) => {
+//    console.log('Result:', res);
+// });
+
+//
+
+// const promise = new Promise((resolve, reject) => {
+//    reject('Something went wrong');
+// });
+
+// promise
+//    .then((res) => {
+//       console.log('Success:', res);
+//    })
+//    .catch((err) => {
+//       console.log('Error:', err);
+//    });
+
+//
+
+// const p = new Promise((resolve, reject) => {
+//    resolve(1);
+// });
+
+// p.then((res) => {
+//    console.log('Step 1:', res);
+//    return res + 1;
+// })
+//    .then((res) => {
+//       console.log('Step 2:', res);
+//       throw new Error('Step 2 Failed');
+//    })
+//    .then((res) => {
+//       console.log('Step 3:', res);
+//    })
+//    .catch((err) => {
+//       console.log('Caught error:', err.message);
+//    });
+
+//
+
+// async function fetchData() {
+//    try {
+//       const result = await Promise.resolve('Hello');
+//       console.log('Got:', result);
+//    } catch (e) {
+//       console.error('Caught:', e);
+//    }
+// }
+
+// fetchData();
+
+//
+
+// async function risky() {
+//    const result = await Promise.reject('Boom');
+//    console.log('After await:', result);
+// }
+
+// risky();
+
+//
+
+// console.log('A');
+
+// setTimeout(() => console.log('B'), 0);
+
+// Promise.resolve().then(() => console.log('C'));
+
+// console.log('D');
+
+//
+
+// Promise.resolve()
+//    .then(() => {
+//       console.log('1');
+//       return Promise.resolve();
+//    })
+//    .then(() => {
+//       console.log('2');
+//    });
+
+// console.log('3');
+
+//
+
+// async function foo() {
+//    console.log('foo start');
+//    await Promise.resolve();
+//    console.log('foo end');
+// }
+
+// console.log('script start');
+// setTimeout(() => console.log('setTimeout'), 0);
+// foo();
+// Promise.resolve().then(() => console.log('promise then'));
+// console.log('script end');
+
+//
+
+// Promise.resolve().then(() => {
+//    console.log('first');
+//    Promise.resolve().then(() => {
+//       console.log('second');
+//    });
+// });
+
+// console.log('outside');
+
+//
+
+// setTimeout(() => {
+//    console.log('timeout start');
+//    Promise.resolve().then(() => {
+//       console.log('microtask inside timeout');
+//    });
+//    console.log('timeout end');
+// }, 0);
+
+// Promise.resolve().then(() => console.log('top microtask'));
+
+// console.log('sync');
+
+//
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//    .then((response) => response.json())
+//    .then((data) => console.log('Data:', data))
+//    .catch((error) => console.error('Error:', error));
+
+//
+
+// fetch('https://jsonplaceholder.typicode.com/unknown')
+//    .then((response) => response.json())
+//    .then((data) => console.log('Data:', data))
+//    .catch((error) => console.error('Error:', error));
+
+//
+
+// fetch('https://unknown-domain.example')
+//    .then((response) => response.json())
+//    .then((data) => console.log('Data:', data))
+//    .catch((error) => console.error('Error:', error.message));
+
+//
+
+// async function fetchPost() {
+//    try {
+//       const res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+
+//       if (!res.ok) {
+//          throw new Error('HTTP Error ' + res.status);
+//       }
+
+//       const data = await res.json();
+//       console.log('Data:', data);
+//    } catch (e) {
+//       console.error('Caught error:', e.message);
+//    }
+// }
+
+// fetchPost();
+
+// async function fetchPost() {
+//    try {
+//       const res = await fetch(
+//          'https://jsonplaceholder.typicode.com/posts/123456'
+//       ); // неіснуючий ID
+
+//       if (!res.ok) {
+//          throw new Error('HTTP Error ' + res.status);
+//       }
+
+//       const data = await res.json();
+//       console.log('Data:', data);
+//    } catch (e) {
+//       console.error('Caught error:', e.message);
+//    }
+// }
+
+// fetchPost();
+
 const products = document.getElementById('wrapper'),
    addProduct = document.getElementById('addProduct'),
    productList = document.getElementById('productList');
@@ -2484,7 +2698,9 @@ products.addEventListener('click', (e) => {
    }
 
    if (e.target.tagName.toUpperCase() === 'BUTTON') {
-      productList.removeChild();
+      const liToRemove = e.target.closest('li'); // Знаходимо <li>, в якому знаходиться кнопка
+      liToRemove.remove(); // Видаляємо його
+
       console.log(`Ви видалили товар № ${e.target.id}`);
    }
 });
