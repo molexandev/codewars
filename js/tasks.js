@@ -2740,20 +2740,72 @@ products.addEventListener('click', (e) => {
 
 //
 
-async function loadSlowResource() {
-   try {
-      const controller = new AbortController();
-      setTimeout(() => controller.abort(), 2000);
+// async function slowFetchWithAbort() {
+//    const controller = new AbortController(); // створюємо "пульт відміни"
+//    const signal = controller.signal;
 
-      const res = await fetch('https://httpbin.org/delay/5', {
-         signal: controller.signal,
-      });
+//    // Запустимо скасування через 2 секунди
+//    setTimeout(() => {
+//       console.log('⏳ Скасування запиту...');
+//       controller.abort(); // натискаємо "Stop"
+//    }, 2000);
 
-      const data = await res.json();
-      console.log('Loaded:', data);
-   } catch (err) {
-      console.error('Error:', err.message);
-   }
-}
+//    try {
+//       console.log('▶ Старт запиту...');
+//       const res = await fetch('https://httpbin.org/delay/5', { signal });
+//       // httpbin.org/delay/5 — спеціальне API, яке відповідає через 5 секунд
 
-loadSlowResource();
+//       const data = await res.json();
+//       console.log('✅ Отримали дані:', data);
+//    } catch (err) {
+//       if (err.name === 'AbortError') {
+//          console.error('❌ Запит було скасовано!');
+//       } else {
+//          console.error('⚠ Інша помилка:', err.message);
+//       }
+//    }
+// }
+
+// slowFetchWithAbort();
+
+//
+
+// function createCounter() {
+//    let counter = 0;
+//    return function () {
+//       counter++;
+//       return counter;
+//    };
+// }
+
+// const a = createCounter();
+
+// console.log(a());
+// console.log(a());
+// console.log(a());
+
+// let a = createCounter();
+
+// console.log(a());
+// console.log(a());
+// console.log(a());
+// console.log(a());
+// console.log(a());
+
+//
+
+// function outer() {
+//    let counter = 0;
+//    return function () {
+//       counter++;
+//       return counter;
+//    };
+// }
+// const inc = outer();
+// inc(); // 1
+// inc(); // 2
+// console.log(inc());
+// console.log(inc());
+// console.log(inc());
+// console.log(inc());
+// console.log(inc());
