@@ -2226,6 +2226,44 @@ buttonAdd.addEventListener('click', () => {
    document.body.append(img);
 });
 
+//! Додавання / видалення товару до списку.
+
+const products = document.getElementById('wrapper'),
+   addProduct = document.getElementById('addProduct'),
+   productList = document.getElementById('productList');
+let count = 0;
+
+products.addEventListener('click', (e) => {
+   e.preventDefault();
+
+   const newLi = document.createElement('li');
+   newLi.style.display = 'flex';
+   newLi.style.justifyContent = 'space-between';
+   newLi.style.alignItems = 'center';
+   const deleteProduct = document.createElement('button');
+
+   if (e.target.id == 'addProduct') {
+      count++;
+      newLi.setAttribute('id', `${count}`);
+      deleteProduct.setAttribute('id', `${count}`);
+      deleteProduct.textContent = '❌ Видалити товар';
+
+      newLi.textContent = `Товар ${count}`;
+      newLi.append(deleteProduct);
+
+      productList.append(newLi);
+
+      return;
+   }
+
+   if (e.target.tagName.toUpperCase() === 'BUTTON') {
+      const liToRemove = e.target.closest('li'); // Знаходимо <li>, в якому знаходиться кнопка
+      liToRemove.remove(); // Видаляємо його
+
+      console.log(`Ви видалили товар № ${e.target.id}`);
+   }
+});
+
 //
 
 // const toggleBtn = document.getElementById('toggleBtn'),
@@ -2610,7 +2648,7 @@ buttonAdd.addEventListener('click', () => {
 
 // console.log('sync');
 
-//
+//! fetch-запити
 
 // fetch('https://jsonplaceholder.typicode.com/posts/1')
 //    .then((response) => response.json())
@@ -2669,38 +2707,53 @@ buttonAdd.addEventListener('click', () => {
 
 // fetchPost();
 
-const products = document.getElementById('wrapper'),
-   addProduct = document.getElementById('addProduct'),
-   productList = document.getElementById('productList');
-let count = 0;
+//
 
-products.addEventListener('click', (e) => {
-   e.preventDefault();
+// async function fetchAndValidateUser(id) {
+//    try {
+//       const res = await fetch(
+//          `https://jsonplaceholder.typicode.com/users/${id}`
+//       );
 
-   const newLi = document.createElement('li');
-   newLi.style.display = 'flex';
-   newLi.style.justifyContent = 'space-between';
-   newLi.style.alignItems = 'center';
-   const deleteProduct = document.createElement('button');
+//       if (!res.ok) {
+//          throw new Error('HTTP Error ' + res.status);
+//       }
 
-   if (e.target.id == 'addProduct') {
-      count++;
-      newLi.setAttribute('id', `${count}`);
-      deleteProduct.setAttribute('id', `${count}`);
-      deleteProduct.textContent = '❌ Видалити товар';
+//       let data;
+//       try {
+//          data = await res.json();
+//       } catch (e) {
+//          throw new Error('Invalid JSON: ' + e.message);
+//       }
 
-      newLi.textContent = `Товар ${count}`;
-      newLi.append(deleteProduct);
+//       if (!data.name || data.name.trim() === '') {
+//          throw new Error('Invalid user data');
+//       }
 
-      productList.append(newLi);
+//       console.log(`User: ${data.name}`);
+//    } catch (e) {
+//       console.error('Caught error:', e.message);
+//    }
+// }
 
-      return;
+// fetchAndValidateUser(1);
+
+//
+
+async function loadSlowResource() {
+   try {
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), 2000);
+
+      const res = await fetch('https://httpbin.org/delay/5', {
+         signal: controller.signal,
+      });
+
+      const data = await res.json();
+      console.log('Loaded:', data);
+   } catch (err) {
+      console.error('Error:', err.message);
    }
+}
 
-   if (e.target.tagName.toUpperCase() === 'BUTTON') {
-      const liToRemove = e.target.closest('li'); // Знаходимо <li>, в якому знаходиться кнопка
-      liToRemove.remove(); // Видаляємо його
-
-      console.log(`Ви видалили товар № ${e.target.id}`);
-   }
-});
+loadSlowResource();
