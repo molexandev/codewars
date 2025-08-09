@@ -2957,4 +2957,119 @@ products.addEventListener('click', (e) => {
 //    setTimeout(() => console.log(i), 100);
 // }
 
+//! typeoff instanceoff
+
+// console.log(typeof null);
+// console.log(typeof [1, 2, 3]);
+// console.log(typeof { a: 1 });
+
+// function b() {}
+// console.log(typeof b);
+
 //
+
+// console.log([] instanceof Array); // true
+// console.log([] instanceof Object); // true (бо Array → Object)
+// console.log({} instanceof Object); // true
+// console.log(new Date() instanceof Date); // true
+// console.log(new Date() instanceof Object); // true
+
+//
+
+// // 1
+// console.log(typeof null); //
+
+// // 2
+// console.log(typeof NaN);
+
+// // 3
+// console.log(typeof (() => {}));
+
+// // 4
+// console.log([] instanceof Array);
+
+// // 5
+// console.log([] instanceof Object);
+
+// // 6
+// function Foo() {}
+// const obj = new Foo();
+// console.log(obj instanceof Foo);
+
+// // 7
+// console.log(null instanceof Object);
+
+// // 8
+// const iframeArray = window.frames[0]?.Array;
+// const arr = iframeArray ? new iframeArray() : [];
+// console.log(arr instanceof Array);
+
+//
+
+// console.log(typeof undefined);
+// console.log(typeof null);
+// console.log(typeof NaN);
+// console.log(typeof []);
+// console.log(typeof {});
+// console.log(typeof function () {});
+// console.log(typeof new String('hi'));
+// console.log(typeof Symbol('id'));
+// console.log(typeof 10n);
+// console.log(typeof /abc/);
+
+//
+
+// class A {}
+// class B extends A {}
+
+// const a = new A();
+// const b = new B();
+// const arr = [];
+// const date = new Date();
+
+// console.log(arr instanceof Function);
+
+//! Рекурсія
+
+// const tree = {
+//    name: 'root',
+//    children: [
+//       { name: 'child1', children: [] },
+//       { name: 'child2', children: [{ name: 'grandchild1', children: [] }] },
+//    ],
+// };
+
+// function traverse(node) {
+//    console.log(node.name);
+//    for (const child of node.children) {
+//       traverse(child); // рекурсія
+//    }
+// }
+
+// traverse(tree);
+
+//
+
+// function sumTo(n) {
+//    if (n === 1) {
+//       return n;
+//    } else {
+//       return n + sumTo(n - 1);
+//    }
+// }
+
+// console.log(sumTo(4));
+
+//
+
+function pow(x, n) {
+   if (x === 1 || n === 1 || n === 0) {
+      return x;
+   } else if (x < 0 || n < 0) {
+      return x * pow(x, -n - 1) * -1;
+   } else {
+      return x * pow(x, n - 1);
+   }
+}
+
+console.log(pow(1, -3)); // 8
