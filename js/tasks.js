@@ -3048,7 +3048,7 @@ products.addEventListener('click', (e) => {
 
 // traverse(tree);
 
-//
+//! Напиши функцію sumTo(n), яка обчислює суму всіх чисел від 1 до n рекурсивно.
 
 // function sumTo(n) {
 //    if (n === 1) {
@@ -3060,16 +3060,49 @@ products.addEventListener('click', (e) => {
 
 // console.log(sumTo(4));
 
-//
+//! Напиши рекурсивну функцію pow(x, n), яка обчислює x в степені n.
 
-function pow(x, n) {
-   if (x === 1 || n === 1 || n === 0) {
-      return x;
-   } else if (x < 0 || n < 0) {
-      return x * pow(x, -n - 1) * -1;
-   } else {
-      return x * pow(x, n - 1);
-   }
+// console.log(-3 % -3 === 0);
+// console.log(1 / 2 / 2 / 2);
+
+// function pow(x, n) {
+//    if (x === 1 || n === 1 || n === 0) {
+//       return x;
+//    } else if (x === 0 && n < 0) {
+//       return false;
+//    } else if (x > 0 && n < 0) {
+//       return Math.pow(x, n);
+//    } else if (x > 0 && n < 0 && n % n === -1) {
+//       return console.log('aaa'); // (x * pow(x, n - -1))
+//    } else if (x < 0 && n < 0 && n % 0) {
+//       return console.log('x * pow(x, -n - 1) * -1'); // x * pow(x, -n - 1) * -1
+//    } else if (x > 0 && n === -1) {
+//       return -x;
+//    } else {
+//       return x * pow(x, n - 1);
+//    }
+// }
+
+// console.log(pow(2, -3));
+
+//! Напиши рекурсивну функцію fib(n), яка повертає n-е число Фібоначчі.
+
+function fib(x) {
+   return x;
 }
 
-console.log(pow(1, -3)); // 8
+console.log(fib(6)); // 8
+
+// //! Є масив, що містить числа та інші масиви. Потрібно знайти суму всіх чисел, незалежно від глибини вкладення.
+
+// sumNested([1, [2, [3, 4]], 5]); // 15
+
+// //! Є об’єкт з довільною кількістю вкладених об’єктів. Потрібно вивести всі ключі та значення (якщо значення — теж об’єкт, обійти його).
+
+// printNested({
+//   a: 1,
+//   b: { c: 2, d: { e: 3 } }
+// })
+// // a: 1
+// // c: 2
+// // e: 3
