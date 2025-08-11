@@ -3073,9 +3073,9 @@ products.addEventListener('click', (e) => {
 //    } else if (x > 0 && n < 0) {
 //       return Math.pow(x, n);
 //    } else if (x > 0 && n < 0 && n % n === -1) {
-//       return console.log('aaa'); // (x * pow(x, n - -1))
+//       return console.log('aaa');
 //    } else if (x < 0 && n < 0 && n % 0) {
-//       return console.log('x * pow(x, -n - 1) * -1'); // x * pow(x, -n - 1) * -1
+//       return console.log('x * pow(x, -n - 1) * -1');
 //    } else if (x > 0 && n === -1) {
 //       return -x;
 //    } else {
@@ -3085,24 +3085,71 @@ products.addEventListener('click', (e) => {
 
 // console.log(pow(2, -3));
 
+// Базова рекурсія для позитивних n
+
+// function pow(x, n) {
+//    if (n === 0) return 1; // x^0 = 1
+//    return x * pow(x, n - 1); // x^n = x * x^(n-1)
+// }
+
+// console.log(pow(2, 10)); // 8
+
 //! Напиши рекурсивну функцію fib(n), яка повертає n-е число Фібоначчі.
 
-function fib(x) {
-   return x;
-}
+// function fib(n) {
+//    if (n <= 1) {
+//       return n;
+//    }
 
-console.log(fib(6)); // 8
+//    return fib(n - 1) + fib(n - 2);
+// }
+
+// console.log(fib(8)); // 21
 
 // //! Є масив, що містить числа та інші масиви. Потрібно знайти суму всіх чисел, незалежно від глибини вкладення.
 
-// sumNested([1, [2, [3, 4]], 5]); // 15
+// function sumNested(arr) {
+//    if (arr.length == 0) {
+//       return 0;
+//    } else if (arr.length == 1) {
+//       return arr[0];
+//    }
+
+//    let sum = 0;
+
+//    arr.forEach((item) => {
+//       if (Number.isFinite(item)) {
+//          sum += item;
+//       } else if (Array.isArray(item)) {
+//          sum += sumNested(item);
+//       }
+//    });
+
+//    return sum;
+// }
+
+// console.log(sumNested([1, [2, [3, 4]], 5])); // 15
 
 // //! Є об’єкт з довільною кількістю вкладених об’єктів. Потрібно вивести всі ключі та значення (якщо значення — теж об’єкт, обійти його).
 
-// printNested({
-//   a: 1,
-//   b: { c: 2, d: { e: 3 } }
-// })
+// function printNested(obj) {
+//    for (const key in obj) {
+//       if (typeof obj[key] === 'object' && obj[key] !== null) {
+//          printNested(obj[key]); // рекурсія
+//       } else {
+//          console.log(`${key}: ${obj[key]}`);
+//       }
+//    }
+
+//    return obj;
+// }
+
+// console.log(
+//    printNested({
+//       a: 1,
+//       b: { c: 2, d: { e: 3 } },
+//    })
+// );
 // // a: 1
 // // c: 2
 // // e: 3
