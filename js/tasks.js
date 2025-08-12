@@ -3153,3 +3153,98 @@ products.addEventListener('click', (e) => {
 // // a: 1
 // // c: 2
 // // e: 3
+
+//! РІВЕНЬ 4
+//! 4.1 Object.keys / Object.values / Object.entries
+
+// const product = { title: 'Phone', price: 500, inStock: true };
+// console.log(Object.keys(product));
+// console.log(Object.values(product));
+
+//
+
+// const user = { name: 'Anna', age: 22, country: 'Ukraine' };
+// const arr = Object.entries(user).map(([key, value]) => `${key}: ${value}`);
+// console.log(arr);
+// // ["name: Anna", "age: 22", "country: Ukraine"]
+
+// * Виведи новий об’єкт тільки з тими учнями, у кого бал більше 6.
+// * Підказка: використовуй Object.entries + filter + Object.fromEntries.
+
+// const scores = {
+//    Alice: 8,
+//    Bob: 5,
+//    Charlie: 9,
+//    Oleksandr: 100,
+//    Anna: 3,
+//    Serhii: 2,
+// };
+
+// // const obj = Object.fromEntries([["name", "Bob"], ["age", 30]]);
+// // console.log(obj); // { name: "Bob", age: 30 }
+
+// const students = Object.entries(scores);
+// const goodStudents = [];
+// students.filter((item, i) => {
+//    if (item[1] > 6) {
+//       goodStudents.push(item);
+//    }
+// });
+
+// const newScores = Object.fromEntries(goodStudents);
+// console.log(newScores);
+
+// * Перетвори його в Map і дістань значення для ключа "lang".
+
+// const settings = { theme: 'dark', lang: 'uk', fontSize: 14 };
+
+// const map = new Map(Object.entries(settings));
+// console.log(map.get('lang'));
+
+//
+
+// const obj = { 2: 'two', 1: 'one', name: 'Bob', 3: 'three' };
+// console.log(Object.keys(obj));
+
+// * Зроби так, щоб вивести масив цін у гривнях із дописаним " грн" наприкінці. Очікуваний результат: ["20 грн", "15 грн", "25 грн"]
+
+const prices = {
+   apple: 20,
+   banana: 15,
+   orange: 25,
+};
+
+const arr = Object.values(prices).map((item) => {
+   return item + ' грн';
+});
+console.log(arr);
+
+// * Зроби так, щоб вийшов новий об’єкт тільки з тими користувачами, яким 18 років або більше. Очікуваний результат: { john: 28, bob: 35 }
+
+const users = {
+   john: 28,
+   alice: 17,
+   bob: 35,
+};
+
+const newUsers = Object.fromEntries(
+   Object.entries(users).filter(([_, value]) => value > 18)
+);
+console.log(newUsers);
+
+// * Зроби масив усіх цін з обох категорій: Очікуваний результат: [500, 1200, 2, 1]
+
+const store = {
+   electronics: {
+      phone: 500,
+      laptop: 1200,
+   },
+   food: {
+      apple: 2,
+      bread: 1,
+   },
+};
+
+const pricesOfStores = [];
+
+console.log(pricesOfStores);
