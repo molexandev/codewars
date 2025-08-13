@@ -3267,17 +3267,95 @@ products.addEventListener('click', (e) => {
 
 // * Підрахувати суму з об’єктів у масиві
 
-const cart = [
-   { product: 'apple', price: 10 },
-   { product: 'banana', price: 15 },
-   { product: 'orange', price: 20 },
-];
+// const cart = [
+//    { product: 'apple', price: 10 },
+//    { product: 'banana', price: 15 },
+//    { product: 'orange', price: 20 },
+// ];
 
-const carts = cart.map((item) => {
-   return Object.values(item);
-});
-let totalAmount = 0;
-let prices = carts.map((val) => {
-   return (totalAmount += val[1]);
-});
-console.log(totalAmount);
+// const carts = cart.map((item) => {
+//    return Object.values(item);
+// });
+// let totalAmount = 0;
+// let prices = carts.map((val) => {
+//    return (totalAmount += val[1]);
+// });
+// console.log(totalAmount);
+
+//! Деструктуризація
+
+// const product = {
+//    title: 'Laptop',
+//    price: 30000,
+//    inStock: true,
+// };
+
+// const { title, price, inStock } = product;
+// console.log(title, price, inStock);
+
+//
+
+// const user = {
+//    firstName: 'John',
+//    lastName: 'Doe',
+// };
+
+// const { firstName: name, lastName: surname } = user;
+// console.log(name, surname);
+
+// const settings = {
+//    theme: 'dark',
+// };
+
+// const { theme, lang = 'en' } = settings;
+// console.log(theme, lang);
+
+//
+
+// const person = {
+//    name: 'Alice',
+//    address: {
+//       city: 'Kyiv',
+//       zip: '01001',
+//    },
+// };
+
+// const {
+//    address: { city, zip },
+// } = person;
+// console.log(city, zip);
+
+//
+
+// const car = {
+//    brand: 'BMW',
+//    model: 'X5',
+//    year: 2021,
+//    color: 'black',
+// };
+
+// const { brand, ...details } = car;
+// console.log(brand, details);
+
+//
+
+// const colors = ['red', 'green', 'blue', 'yellow'];
+// const [first, third] = colors;
+// console.log(first, third);
+
+//
+
+// const coords = [10, 20, 30, 40];
+// const [x, y, ...rest] = coords;
+// console.log(x, y, rest);
+
+//
+
+const person = {
+   name: 'Alice',
+   age: 25,
+   hobbies: ['reading', 'swimming', 'coding'],
+};
+
+const { name, secondHobby = hobbies[1] } = person;
+console.log(name, secondHobby);
