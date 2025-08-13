@@ -3208,43 +3208,76 @@ products.addEventListener('click', (e) => {
 
 // * Зроби так, щоб вивести масив цін у гривнях із дописаним " грн" наприкінці. Очікуваний результат: ["20 грн", "15 грн", "25 грн"]
 
-const prices = {
-   apple: 20,
-   banana: 15,
-   orange: 25,
-};
+// const prices = {
+//    apple: 20,
+//    banana: 15,
+//    orange: 25,
+// };
 
-const arr = Object.values(prices).map((item) => {
-   return item + ' грн';
-});
-console.log(arr);
+// const arr = Object.values(prices).map((item) => {
+//    return item + ' грн';
+// });
+// console.log(arr);
 
 // * Зроби так, щоб вийшов новий об’єкт тільки з тими користувачами, яким 18 років або більше. Очікуваний результат: { john: 28, bob: 35 }
 
-const users = {
-   john: 28,
-   alice: 17,
-   bob: 35,
-};
+// const users = {
+//    john: 28,
+//    alice: 17,
+//    bob: 35,
+// };
 
-const newUsers = Object.fromEntries(
-   Object.entries(users).filter(([_, value]) => value > 18)
-);
-console.log(newUsers);
+// const newUsers = Object.fromEntries(
+//    Object.entries(users).filter(([_, value]) => value >= 18)
+// );
+// console.log(newUsers);
 
 // * Зроби масив усіх цін з обох категорій: Очікуваний результат: [500, 1200, 2, 1]
 
-const store = {
-   electronics: {
-      phone: 500,
-      laptop: 1200,
-   },
-   food: {
-      apple: 2,
-      bread: 1,
-   },
-};
+// const store = {
+//    electronics: {
+//       phone: 500,
+//       laptop: 1200,
+//    },
+//    food: {
+//       apple: 2,
+//       bread: 1,
+//       butter: 15,
+//    },
+// };
 
-const pricesOfStores = [];
+// function arrOfPrices(obj) {
+//    const pricesOfStores = [];
+//    let newObj = Object.entries(obj);
+//    // console.log(newObj);
+//    newObj.map((item) => {
+//       if (typeof item[1] == 'object') {
+//          // return Object.entries(item);
+//          return Object.values(item[1]).map((val) => {
+//             pricesOfStores.push(val);
+//          });
+//       } else {
+//          return pricesOfStores.push(item);
+//       }
+//    });
+//    return pricesOfStores;
+// }
 
-console.log(pricesOfStores);
+// console.log(arrOfPrices(store));
+
+// * Підрахувати суму з об’єктів у масиві
+
+const cart = [
+   { product: 'apple', price: 10 },
+   { product: 'banana', price: 15 },
+   { product: 'orange', price: 20 },
+];
+
+const carts = cart.map((item) => {
+   return Object.values(item);
+});
+let totalAmount = 0;
+let prices = carts.map((val) => {
+   return (totalAmount += val[1]);
+});
+console.log(totalAmount);
