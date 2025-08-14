@@ -3351,11 +3351,74 @@ products.addEventListener('click', (e) => {
 
 //
 
-const person = {
-   name: 'Alice',
-   age: 25,
-   hobbies: ['reading', 'swimming', 'coding'],
-};
+// const person = {
+//    name: 'Alice',
+//    age: 25,
+//    hobbies: ['reading', 'swimming', 'coding'],
+// };
 
-const { name, secondHobby = hobbies[1] } = person;
-console.log(name, secondHobby);
+// const {
+//    name: userName,
+//    hobbies: [, secondHobby],
+// } = person;
+// console.log(userName, secondHobby);
+
+//
+
+// function printUser({ name, age }) {
+//    return console.log(`${name} ${age}`);
+// }
+
+// printUser({ name: 'John', age: 30 });
+
+//
+
+// const users = [
+//    { id: 1, username: 'admin' },
+//    { id: 2, username: 'guest' },
+// ];
+
+// const [, { username: secondUsername }] = users;
+// console.log(secondUsername);
+
+//
+
+// const nums = [10, 20, 30, 40];
+
+// const [first, , third] = nums;
+// console.log(first, third);
+
+//
+
+// const config = { host: 'localhost' };
+// const { host: server = '0000' } = config;
+// console.log(server);
+
+//
+
+// const user = {
+//    name: 'Alice',
+//    address: {
+//       city: 'Kyiv',
+//       zip: '01001',
+//    },
+// };
+
+// const {
+//    address: { city, zip },
+// } = user;
+// console.log(city, zip);
+
+//
+
+// const people = [{ username: 'john' }, { username: 'mary' }];
+// const [, { username: secondName }] = people;
+// console.log(secondName);
+
+//
+
+// function printProduct({ title, price }) {
+//    console.log(`Product: ${title}, Price: ${price}`);
+// }
+
+// printProduct({ title: 'Book', price: 150, inStock: true });
