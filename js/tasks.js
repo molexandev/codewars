@@ -3422,3 +3422,92 @@ products.addEventListener('click', (e) => {
 // }
 
 // printProduct({ title: 'Book', price: 150, inStock: true });
+
+//! Object > map
+
+// const map = new Map();
+
+// map.set('Alex', 30);
+// map.set('Oleksandr', 36);
+// map.set('Ivan', 3);
+
+// console.log(map.get('Oleksandr'));
+// console.log(map.has('Alex'));
+// console.log(map.size);
+
+//
+
+// const obj = {
+//    apple: 25,
+//    banana: 30,
+//    orange: 10,
+//    cucumber: 100,
+//    strawberry: 55,
+// };
+
+// const fruits = new Map(Object.entries(obj));
+
+// for (const [fruit, price] of fruits) {
+//    console.log(`${fruit} → ${price} грн`);
+// }
+
+//
+
+// const settings = { theme: 'light', lang: 'uk' };
+// const addSettings = new Map(Object.entries(settings));
+// addSettings.set(`"fontSize": "16px"`);
+// const newObj = Object.fromEntries(addSettings);
+// console.log(newObj);
+
+// Використовуючи Map, підрахуй, скільки разів кожне слово зустрічається. Результат:
+// apple → 3
+// banana → 2
+// orange → 1
+
+// const words = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+// const countWords = new Map();
+// words.forEach((word) => {
+//    countWords.set(word, (countWords.get(word) || 0) + 1);
+// });
+
+// const countWord = Object.fromEntries(countWords);
+// const { fruit, amount } = countWord;
+
+// for (const [fruit, amount] of Object.entries(countWord)) {
+//    console.log(`${fruit} → ${amount}`);
+// }
+
+//
+
+// const userRoles = new Map([
+//    ['Alice', 'admin'],
+//    ['Bob', 'editor'],
+//    ['Charlie', 'viewer'],
+// ]);
+
+// for (const [user, role] of userRoles) {
+//    console.log(`${user} → ${role}`);
+// }
+
+//
+
+const cache = new Map();
+
+function square(n) {
+   if (cache.has(n)) {
+      console.log(`Беремо з кешу: ${n}² = ${cache.get(n)}`);
+      return cache.get(n);
+   }
+
+   console.log(`Обчислюємо: ${n}²`);
+   const result = n * n;
+   cache.set(n, result);
+   return result;
+}
+
+console.log(square(4)); // обчислює
+console.log(square(4)); // з кешу
+console.log(square(5)); // обчислює
+console.log(square(5)); // з кешу
+console.log(square(15)); // з кешу
+console.log(square(10)); // з кешу
