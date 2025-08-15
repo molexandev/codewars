@@ -3491,23 +3491,88 @@ products.addEventListener('click', (e) => {
 
 //
 
-const cache = new Map();
+// const cache = new Map();
 
-function square(n) {
-   if (cache.has(n)) {
-      console.log(`Беремо з кешу: ${n}² = ${cache.get(n)}`);
-      return cache.get(n);
-   }
+// function square(n) {
+//    if (cache.has(n)) {
+//       console.log(`Беремо з кешу: ${n}² = ${cache.get(n)}`);
+//       return cache.get(n);
+//    }
 
-   console.log(`Обчислюємо: ${n}²`);
-   const result = n * n;
-   cache.set(n, result);
-   return result;
-}
+//    console.log(`Обчислюємо: ${n}²`);
+//    const result = n * n;
+//    cache.set(n, result);
+//    return result;
+// }
 
-console.log(square(4)); // обчислює
-console.log(square(4)); // з кешу
-console.log(square(5)); // обчислює
-console.log(square(5)); // з кешу
-console.log(square(15)); // з кешу
-console.log(square(10)); // з кешу
+// console.log(square(4)); // обчислює
+// console.log(square(4)); // з кешу
+// console.log(square(5)); // обчислює
+// console.log(square(5)); // з кешу
+// console.log(square(15)); // обчислює
+// console.log(square(10)); // обчислює
+
+//! Set
+
+// // "apple", "banana", "apple", "orange".
+
+// const fruits = new Set();
+// fruits.add('apple');
+// fruits.add('banana');
+// fruits.add('apple');
+// fruits.add('orange');
+// console.log(fruits.size);
+
+// //
+
+// const numbers = [1, 2, 3, 2, 4, 1, 5];
+// const uniqueNumbers = new Set();
+// numbers.forEach((item) => {
+//    uniqueNumbers.add(item);
+// });
+// console.log(uniqueNumbers);
+
+// //
+
+// const names = ['Alex', 'Ivan', 'Alex', 'Maria', 'Ivan'];
+// const uniqueNames = new Set();
+// names.forEach((item) => {
+//    uniqueNames.add(item);
+// });
+// console.log(uniqueNames);
+
+// //
+
+// const fruitsInArr = new Set(['apple', 'banana', 'orange']);
+// fruitsInArr.forEach((item) => {
+//    if (item == 'banana') {
+//       return console.log(item);
+//    }
+// });
+
+// //
+
+// const words = ['cat', 'dog', 'cat', 'bird', 'dog', 'dog'];
+// const newWords = new Set();
+// words.forEach((item) => {
+//    newWords.add(item);
+// });
+// console.log(newWords.size);
+
+//
+
+const groupA = ['Anna', 'John', 'Peter', 'Kate', 'Mike', 'John'];
+const groupB = ['John', 'Sarah', 'Kate', 'Tom', 'Mike', 'Tom'];
+
+const setA = new Set(groupA);
+const setB = new Set(groupB);
+
+const intersection = [...setA].filter((x) => setB.has(x));
+
+const symmetricDiff = new Set([
+   ...groupA.filter((x) => !setB.has(x)),
+   ...groupB.filter((x) => !setA.has(x)),
+]);
+
+console.log('Перетин:', intersection);
+console.log('Симетрична різниця:', symmetricDiff);
