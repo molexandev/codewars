@@ -3561,18 +3561,73 @@ products.addEventListener('click', (e) => {
 
 //
 
-const groupA = ['Anna', 'John', 'Peter', 'Kate', 'Mike', 'John'];
-const groupB = ['John', 'Sarah', 'Kate', 'Tom', 'Mike', 'Tom'];
+// const groupA = ['Anna', 'John', 'Peter', 'Kate', 'Mike', 'John'];
+// const groupB = ['John', 'Sarah', 'Kate', 'Tom', 'Mike', 'Tom'];
 
-const setA = new Set(groupA);
-const setB = new Set(groupB);
+// const setA = new Set(groupA);
+// const setB = new Set(groupB);
 
-const intersection = [...setA].filter((x) => setB.has(x));
+// const intersection = [...setA].filter((x) => setB.has(x));
 
-const symmetricDiff = new Set([
-   ...groupA.filter((x) => !setB.has(x)),
-   ...groupB.filter((x) => !setA.has(x)),
-]);
+// const symmetricDiff = new Set([
+//    ...groupA.filter((x) => !setB.has(x)),
+//    ...groupB.filter((x) => !setA.has(x)),
+// ]);
 
-console.log('Перетин:', intersection);
-console.log('Симетрична різниця:', symmetricDiff);
+// console.log('Перетин:', intersection);
+// console.log('Симетрична різниця:', symmetricDiff);
+
+//! WeakMap та WeakSet
+
+// let user = { name: 'Alice' };
+// let newWeak = new WeakMap();
+// newWeak.set(user, 'admin');
+// console.log(newWeak);
+
+// //
+
+// user = null;
+// console.log(newWeak);
+
+// let newWeakSet = new WeakSet();
+// let user1 = { name: 'Alice' };
+// let user2 = { name: 'Ivan' };
+
+// newWeakSet.add(user1).add(user2);
+// console.log(newWeakSet);
+// console.log(newWeakSet.has(user1));
+// console.log(newWeakSet.has(user2));
+
+//
+
+// const user = { name: 'Bob' };
+// let nWm = new WeakMap();
+
+// function setSecret(user, secret) {
+//    return nWm.set(user, secret);
+// }
+
+// function getSecret(user) {
+//    return nWm.get(user);
+// }
+
+// setSecret(user, 'Likes pizza');
+// console.log(getSecret(user));
+
+//
+
+let newWeakMap = new WeakMap();
+
+function login(user) {
+   let count = newWeakMap.get(user) || 0;
+   count++;
+   newWeakMap.set(user, count);
+   console.log(`${user.name} → входів: ${count}`);
+}
+
+const john = { name: 'John' };
+login(john); // John → входів: 1
+login(john); // John → входів: 2
+
+const alice = { name: 'Alice' };
+login(alice); // Alice → входів: 1
