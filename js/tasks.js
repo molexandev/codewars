@@ -3616,18 +3616,71 @@ products.addEventListener('click', (e) => {
 
 //
 
-let newWeakMap = new WeakMap();
+// let newWeakMap = new WeakMap();
 
-function login(user) {
-   let count = newWeakMap.get(user) || 0;
-   count++;
-   newWeakMap.set(user, count);
-   console.log(`${user.name} → входів: ${count}`);
+// function login(user) {
+//    let count = newWeakMap.get(user) || 0;
+//    count++;
+//    newWeakMap.set(user, count);
+//    console.log(`${user.name} → входів: ${count}`);
+// }
+
+// const john = { name: 'John' };
+// login(john); // John → входів: 1
+// login(john); // John → входів: 2
+
+// const alice = { name: 'Alice' };
+// login(alice); // Alice → входів: 1
+
+//! Spred
+
+// const numbers = [1, 2, 3, 4];
+// const newNumbers = [...numbers, 5];
+
+// //
+
+// const a = ['apple', 'banana'];
+// const b = ['orange', 'pear'];
+// const c = [...a, ...b];
+
+// //
+
+// const user = { name: 'Alice', age: 25 };
+// const newUser = { ...user, age: 26, city: 'Kyiv' };
+
+// const obj = { nested: { x: 10 } };
+// const copy = { ...obj };
+// copy.nested.x = 20;
+
+// console.log(obj.nested.x);
+
+//! Rest
+
+// function multiply(...args) {
+//    return args.reduce((acc, curr) => acc + curr);
+// }
+
+// console.log(multiply(2, 3)); // 6
+// console.log(multiply(2, 3, 4)); // 24
+// console.log(multiply(2, 3, 4, 7, 9, 15)); // 24
+
+//
+
+// const [first, second, ...arr] = [1, 2, 3, 4, 5];
+// console.log(first);
+// console.log(second);
+// console.log(arr);
+
+//
+
+// const car = { brand: 'BMW', model: 'X5', year: 2021, color: 'black' };
+// const { brand, ...details } = car;
+// console.log(details);
+
+//
+
+function showUser(name, ...hobbies) {
+   return `${name} likes: ${hobbies} `;
 }
 
-const john = { name: 'John' };
-login(john); // John → входів: 1
-login(john); // John → входів: 2
-
-const alice = { name: 'Alice' };
-login(alice); // Alice → входів: 1
+console.log(showUser('Alice', 'reading', 'traveling', 'coding')); // Alice likes: reading, traveling, coding
