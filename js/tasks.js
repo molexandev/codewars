@@ -3745,15 +3745,78 @@ products.addEventListener('click', (e) => {
 
 //
 
-const company = {
-   name: 'TechCorp',
-   employees: [
-      { name: 'Alice', age: 28 },
-      { name: 'Bob', age: 35 },
-   ],
-   location: 'Kyiv',
-};
+// const company = {
+//    name: 'TechCorp',
+//    employees: [
+//       { name: 'Alice', age: 28 },
+//       { name: 'Bob', age: 35 },
+//    ],
+//    location: 'Kyiv',
+// };
 
-const str = JSON.stringify(company);
-const newStr = JSON.parse(str);
-console.log(...newStr.employees);
+// const str = JSON.stringify(company);
+// const newStr = JSON.parse(str);
+// console.log(...newStr.employees);
+
+//
+
+// const user = {
+//    name: 'Alice',
+//    birthday: new Date('2000-01-01'),
+// };
+// const str = JSON.stringify(user);
+// const parsed = JSON.parse(str);
+// console.log(parsed.birthday instanceof Date);
+
+//! Date
+
+// const now = new Date();
+// console.log(`${now.getFullYear()}. ${now.getMonth() + 1}. ${now.getDate()}`);
+
+//
+
+// const date = new Date('1995-12-17T03:24:00');
+// console.log(
+//    `День тижня: ${now.toLocaleDateString('uk-UA', { weekday: 'long' })}`
+// );
+
+//
+
+// function getAge(birthday) {
+//    const now = new Date();
+//    const birth = new Date(birthday);
+
+//    let age = now.getFullYear() - birth.getFullYear();
+
+//    const m = now.getMonth() - birth.getMonth();
+//    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
+//       age--;
+//    }
+
+//    return age;
+// }
+
+// console.log(getAge('1988-12-24'));
+
+//
+
+// let start = new Date();
+// for (let i = 0; i < 1e7; i++) {}
+// let end = new Date();
+// console.log(`Час виконання: ${end - start} мс`);
+
+//
+
+// function formatDate(date) {
+//    const dd = String(date.getDate()).padStart(2, '0');
+//    const mm = String(date.getMonth() + 1).padStart(2, '0');
+//    const yyyy = date.getFullYear();
+//    const hh = String(date.getHours()).padStart(2, '0');
+//    const min = String(date.getMinutes()).padStart(2, '0');
+
+//    return `${dd}.${mm}.${yyyy}, ${hh}:${min}`;
+// }
+
+// console.log(formatDate(new Date()));
+
+//
