@@ -3679,8 +3679,81 @@ products.addEventListener('click', (e) => {
 
 //
 
-function showUser(name, ...hobbies) {
-   return `${name} likes: ${hobbies} `;
-}
+// function showUser(name, ...hobbies) {
+//    return `${name} likes: ${hobbies.join(', ')}`;
+// }
 
-console.log(showUser('Alice', 'reading', 'traveling', 'coding')); // Alice likes: reading, traveling, coding
+// console.log(showUser('Alice', 'reading', 'traveling', 'coding')); // Alice likes: reading, traveling, coding
+
+//
+
+// const nums = [10, 20, 30, 40, 50];
+// const [first, ...rest] = nums;
+// const last = rest.pop();
+// const middle = rest;
+
+// console.log(first);
+// console.log(last);
+// console.log(middle);
+
+//! JSON
+
+// const user = { name: 'Alice', age: 25, isAdmin: false };
+// const json = JSON.stringify(user);
+
+// console.log(json);
+// const a = JSON.parse(json);
+// console.log(a);
+
+//
+
+// const product = {
+//    title: 'Laptop',
+//    price: 20000,
+//    inStock: true,
+// };
+
+// const str = JSON.stringify(product);
+// console.log(str);
+
+//
+
+// const str = '{"name":"Alice","age":25,"isAdmin":false}';
+// const json = JSON.parse(str);
+// console.log(json.name);
+// console.log(json.age);
+
+//
+
+// const user = {
+//    name: 'John',
+//    password: 'secret',
+//    age: 30,
+// };
+
+// const data = JSON.stringify(user, ['name', 'age']);
+// console.log(data);
+
+//
+
+// const str = '{"date":"2025-08-22T10:00:00.000Z"}';
+// const newDate = JSON.parse(str, (key, value) => {
+//    if (key === 'date') return new Date(value);
+//    return value;
+// });
+// console.log(newDate);
+
+//
+
+const company = {
+   name: 'TechCorp',
+   employees: [
+      { name: 'Alice', age: 28 },
+      { name: 'Bob', age: 35 },
+   ],
+   location: 'Kyiv',
+};
+
+const str = JSON.stringify(company);
+const newStr = JSON.parse(str);
+console.log(...newStr.employees);
