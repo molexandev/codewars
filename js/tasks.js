@@ -3819,4 +3819,38 @@ products.addEventListener('click', (e) => {
 
 // console.log(formatDate(new Date()));
 
+//!  Math
+
+// console.log(Math.SQRT2);
+
 //
+
+// console.log(Math.floor(Math.PI));
+// console.log(Math.ceil(Math.PI));
+// console.log(Math.round(Math.PI));
+
+//
+
+// // let min = 0;
+// // let max = 10;
+
+// let min = 5;
+// let max = 15;
+// console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+
+//
+
+const nums = [12, 5, 8, 130, 44];
+
+function getMaxOfArray(numArray) {
+   const a = Math.max.apply(null, numArray);
+   const b = Math.min.apply(null, numArray);
+   return a, b;
+}
+
+console.log(getMaxOfArray(nums));
+
+// const str = nums.join(', ');
+// console.log(str);
+// console.log(Math.max(str));
+// console.log(Math.min(str));
