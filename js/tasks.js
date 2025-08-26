@@ -3859,3 +3859,98 @@ products.addEventListener('click', (e) => {
 //    return Math.sqrt(a + b);
 // }
 // console.log(getHypotenuse(25, 49));
+
+//! String
+
+// const str = 'JavaScript';
+// console.log(str.length);
+// console.log(str[0]);
+// console.log(str.slice(-1));
+
+//
+
+// const hi = 'hello WORLD';
+// console.log(hi.toLowerCase());
+// const newHi = `${hi[0]} ${hi[1].toLowerCase()}`;
+// console.log(newHi);
+
+//
+
+// const js = 'JavaScript is awesome';
+// console.log(js.includes('script'));
+
+//
+
+// const strToTrim = ' Too many spaces ';
+// console.log(strToTrim.trim());
+
+//
+
+// const str = 'Frontend Developer';
+// console.log(str.slice(0, 8));
+
+//
+
+// const words = 'apple,banana,orange'.split(',');
+// console.log(words.join(' | '));
+
+//
+
+// function reverse(str) {
+//    return str.split('').reverse().join('');
+// }
+
+// console.log(reverse('Hello World'));
+
+//
+
+// function capitalize(str) {
+//    let a = str.split('');
+//    let newStr = a.map((item, i) => {
+//       return i == 0 ? item.toUpperCase() : item;
+//    });
+
+//    return newStr.join('');
+// }
+
+// console.log(capitalize('javaskript'));
+// console.log(capitalize('serhii'));
+
+//
+
+// function abbreviate(str) {
+//    let a = str.split(' ');
+//    console.log(a);
+//    let newStr = a.map((item, i) => {
+//       return item.slice(0, 1);
+//    });
+//    return newStr.join('');
+// }
+
+// console.log(abbreviate('National Aeronautics Space Administration'));
+
+//! RegExp
+
+// const str = 'cat';
+// const regexp = /cat/;
+// console.log(regexp.test(str));
+
+//
+
+// const date = 'Today is 2025-08-22';
+// console.log(date.match(/\d/g).join(''));
+// console.log(date.replace(/\s/g, '-'));
+
+//
+
+// const fruits = 'apple, banana, orange';
+// console.log(fruits.split(/,\s*/));
+
+//
+
+const fruits = 'apple, banana, orange';
+const email = 'user@example.com';
+const emailRegex = /.+@.+\..+/;
+
+console.log(emailRegex.test(fruits));
+console.log(emailRegex.test(email));
