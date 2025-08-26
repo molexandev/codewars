@@ -3948,9 +3948,62 @@ products.addEventListener('click', (e) => {
 
 //
 
-const fruits = 'apple, banana, orange';
-const email = 'user@example.com';
-const emailRegex = /.+@.+\..+/;
+// const fruits = 'apple, banana, orange';
+// const email = 'user@example.com';
+// const emailRegex = /.+@.+\..+/;
 
-console.log(emailRegex.test(fruits));
-console.log(emailRegex.test(email));
+// console.log(emailRegex.test(fruits));
+// console.log(emailRegex.test(email));
+
+//! Array methods
+
+// const nums = [1, 2, 3, 4];
+// const squareNums = nums.map((item) => {
+//    return item * item;
+// });
+// console.log(squareNums);
+
+//
+
+// const users = [
+//    { name: 'Ann', age: 17 },
+//    { name: 'Bob', age: 21 },
+//    { name: 'Cat', age: 18 },
+// ];
+// const adults = users.filter((user) => user.age >= 18);
+// console.log(adults);
+
+//
+
+// const arr = [5, 2, 9, 1, 5, 6];
+// const newArr = arr.reduce((a, b) => a + b, 0);
+// const maxValue = arr.reduce((a, b) => Math.max(a, b));
+// console.log(newArr, maxValue);
+
+//
+
+// const tags = ['js', 'css', 'html', 'js', 'css', 'js'];
+// const counts = tags.reduce((accumulator, currentValue) => {
+//    accumulator[currentValue] = (accumulator[currentValue] || 0) + 1;
+//    return accumulator;
+// }, {});
+
+// console.log(counts);
+
+//
+
+const n = [10, 1, 5, 20, 3];
+const people = [
+   { n: 'A', age: 30 },
+   { n: 'B', age: 25 },
+   { n: 'C', age: 30 },
+];
+
+console.log(n.sort((a, b) => a - b));
+people.sort((a, b) => {
+   if (a.n !== b.n) {
+      return a.n.localeCompare(b.n);
+   }
+   return b.age - a.age; // вищі оцінки першими
+});
+console.log(people);
