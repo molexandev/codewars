@@ -3840,17 +3840,22 @@ products.addEventListener('click', (e) => {
 
 //
 
-const nums = [12, 5, 8, 130, 44];
+// const nums = [12, 5, 8, 130, 44];
 
-function getMaxOfArray(numArray) {
-   const a = Math.max.apply(null, numArray);
-   const b = Math.min.apply(null, numArray);
-   return a, b;
-}
+// console.log(Math.max(...nums));
+// console.log(Math.min(...nums));
 
-console.log(getMaxOfArray(nums));
+//
 
-// const str = nums.join(', ');
-// console.log(str);
-// console.log(Math.max(str));
-// console.log(Math.min(str));
+// function randomInteger(min, max) {
+//    return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+
+// console.log(randomInteger(1, 6));
+
+//
+
+// function getHypotenuse(a, b) {
+//    return Math.sqrt(a + b);
+// }
+// console.log(getHypotenuse(25, 49));
