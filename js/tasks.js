@@ -4171,17 +4171,55 @@ products.addEventListener('click', (e) => {
 
 //
 
-class User {
-   constructor(name) {
-      this.name = name;
+// class User {
+//    constructor(name) {
+//       this.name = name;
+//    }
+
+//    sayHi() {
+//       console.log(`Привіт! Я ${this.name}`);
+//    }
+// }
+
+// const alex = new User('Alex');
+// console.log(alex.sayHi());
+// User.prototype.logout = function () {};
+// console.log(alex.__proto__ === User.prototype);
+
+//! Repeat getters & setters
+
+class BankAccount {
+   constructor(name, balance) {
+      this._name = name;
+      this._balance = balance;
    }
 
-   sayHi() {
-      console.log(`Привіт! Я ${this.name}`);
+   // гетер
+   get balance() {
+      return this._balance;
+   }
+
+   // сетер
+   set balance(amount) {
+      if (amount < 0) {
+         console.log('Помилка: не можна зменшити баланс через сеттер!');
+      } else {
+         this._balance += amount;
+      }
+   }
+
+   deposit(amount) {
+      if (amount > 0) this._balance += amount;
+      else console.log('Сума поповнення має бути додатною');
    }
 }
 
-const alex = new User('Alex');
-console.log(alex.sayHi());
-User.prototype.logout = function () {};
-console.log(alex.__proto__ === User.prototype);
+const anna = new BankAccount('Anna', 500);
+
+console.log(anna.balance); // 500
+anna.balance = 300; // додаємо через сеттер
+console.log(anna.balance); // 800
+anna.balance = -100; // Помилка: не можна зменшити баланс
+console.log(anna.balance); // 800
+anna.deposit(200); // 1000
+console.log(anna.balance); // 1000
