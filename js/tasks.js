@@ -2,6 +2,8 @@
 
 // const { createElement } = require('react');
 
+// const { createElement } = require('react');
+
 //! Завдання для підготовки до співбесіди
 
 // TODO Напиши функцію getUserPosts(userId), яка: Приймає userId (число) як аргумент.Завантажує пости користувача з API: https://jsonplaceholder.typicode.com/posts?userId=USER_ID Виводить у консоль заголовки постів цього користувача (властивість title).
@@ -3992,18 +3994,157 @@ products.addEventListener('click', (e) => {
 
 //
 
-const n = [10, 1, 5, 20, 3];
-const people = [
-   { n: 'A', age: 30 },
-   { n: 'B', age: 25 },
-   { n: 'C', age: 30 },
-];
+// const n = [10, 1, 5, 20, 3];
+// const people = [
+//    { n: 'A', age: 30 },
+//    { n: 'B', age: 25 },
+//    { n: 'C', age: 30 },
+// ];
 
-console.log(n.sort((a, b) => a - b));
-people.sort((a, b) => {
-   if (a.n !== b.n) {
-      return a.n.localeCompare(b.n);
+// console.log(n.sort((a, b) => a - b));
+// people.sort((a, b) => {
+//    if (a.n !== b.n) {
+//       return a.n.localeCompare(b.n);
+//    }
+//    return b.age - a.age; // вищі оцінки першими
+// });
+// console.log(people);
+
+//! shallow vs deep copy
+
+// const user = {
+//    name: 'Alex',
+//    address: { city: 'Kyiv', street: 'Bandery pr-t' },
+//    hobbies: ['football', 'hockey', 'hiking'],
+// };
+
+// const shallowCopy = { ...user };
+// console.log((shallowCopy.address.city = 'New York'));
+// console.log(user.address.city);
+// const deepCopy = structuredClone(user);
+// console.log((deepCopy.address.city = 'Chikago'));
+// console.log(user.address.city);
+
+//
+
+// const car = { brand: 'Tesla', model: 'S', engine: { type: 'electric' } };
+// // const shallow = { ...car };
+// // console.log((shallow.engine.type = 'disel'));
+// // console.log(shallow.engine.type);
+
+// const deep = structuredClone(car);
+// console.log((deep.engine.type = 'disel'));
+// console.log(deep.engine.type);
+// console.log(car.engine.type);
+
+//
+
+// const numbers = [1, 2, 3, 4, 5];
+// const evenNumbers = numbers.filter((num) => num % 2 === 0);
+// console.log(evenNumbers);
+// const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+// console.log(sum);
+// const [first, ...other] = numbers;
+// console.log(first);
+// console.log(other);
+
+//! tricky cases
+
+// console.log(null == undefined);
+// console.log(null == 0);
+
+//
+
+// console.log(NaN == NaN);
+// console.log(Number.isNaN(NaN));
+
+//
+
+// console.log([] == '');
+// console.log([] == 0);
+// console.log([1] == true);
+// console.log([2] == true);
+// console.log('A' == 'a');
+// console.log('a' == 'a');
+// console.log('A' > 'a');
+// console.log('0' == 0);
+
+//! IIFE
+
+// const funcs = [];
+
+// for (var i = 0; i < 3; i++) {
+//    funcs.push(
+//       (function (x) {
+//          return function () {
+//             console.log(x);
+//          };
+//       })(i)
+//    );
+// }
+
+// funcs[0](); // 0
+// funcs[1](); // 1
+// funcs[2](); // 2
+
+//! Module pattern / Revealing Module pattern
+
+// const CounterModule = (function () {
+//    let count = 0;
+
+//    function increment() {
+//       count++;
+//       console.log(count);
+//    }
+
+//    function reset() {
+//       count = 0;
+//       console.log('reset:', count);
+//    }
+
+//    // тут відкриваємо тільки потрібне
+//    return {
+//       increment: increment,
+//       reset: reset,
+//    };
+// })();
+
+// CounterModule.increment(); // 1
+// CounterModule.reset(); // reset: 0
+
+//
+
+const CreateUser = (function () {
+   let user = [];
+
+   function addUser(name) {
+      user.push(name);
    }
-   return b.age - a.age; // вищі оцінки першими
-});
-console.log(people);
+
+   function getAll() {
+      console.log(user);
+   }
+
+   function count() {
+      console.log(user.length);
+   }
+
+   function deleteUser(name) {
+      const index = user.findIndex(
+         (item) => item.toLowerCase() === name.toLowerCase()
+      );
+      if (index !== -1) {
+         user.splice(index, 1);
+      }
+      return user;
+   }
+
+   return { addUser, getAll, count, deleteUser };
+})();
+
+CreateUser.addUser('Alex');
+CreateUser.addUser('Serhii');
+CreateUser.addUser('Mark');
+CreateUser.deleteUser('Alex');
+CreateUser.getAll();
+CreateUser.count();
