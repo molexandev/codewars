@@ -4114,37 +4114,74 @@ products.addEventListener('click', (e) => {
 
 //
 
-const CreateUser = (function () {
-   let user = [];
+// const CreateUser = (function () {
+//    let user = [];
 
-   function addUser(name) {
-      user.push(name);
+//    function addUser(name) {
+//       user.push(name);
+//    }
+
+//    function getAll() {
+//       console.log(user);
+//    }
+
+//    function count() {
+//       console.log(user.length);
+//    }
+
+//    function deleteUser(name) {
+//       const index = user.findIndex(
+//          (item) => item.toLowerCase() === name.toLowerCase()
+//       );
+//       if (index !== -1) {
+//          user.splice(index, 1);
+//       }
+//       return user;
+//    }
+
+//    return { addUser, getAll, count, deleteUser };
+// })();
+
+// CreateUser.addUser('Alex');
+// CreateUser.addUser('Serhii');
+// CreateUser.addUser('Mark');
+// CreateUser.deleteUser('Alex');
+// CreateUser.getAll();
+// CreateUser.count();
+
+//! repeat Class, prototype...
+
+// class Car {
+//    constructor(brand) {
+//       this.brand = brand;
+//    }
+
+//    drive() {
+//       return `Driving ${this.brand}`;
+//    }
+// }
+
+// const bmw = new Car('BMW');
+// console.log(bmw.__proto__ === Car.prototype);
+// console.log(Car.prototype.constructor === Car);
+// Car.prototype.stop = function () {
+//    console.log(`${this.brand} зупинився`);
+// };
+// bmw.stop();
+
+//
+
+class User {
+   constructor(name) {
+      this.name = name;
    }
 
-   function getAll() {
-      console.log(user);
+   sayHi() {
+      console.log(`Привіт! Я ${this.name}`);
    }
+}
 
-   function count() {
-      console.log(user.length);
-   }
-
-   function deleteUser(name) {
-      const index = user.findIndex(
-         (item) => item.toLowerCase() === name.toLowerCase()
-      );
-      if (index !== -1) {
-         user.splice(index, 1);
-      }
-      return user;
-   }
-
-   return { addUser, getAll, count, deleteUser };
-})();
-
-CreateUser.addUser('Alex');
-CreateUser.addUser('Serhii');
-CreateUser.addUser('Mark');
-CreateUser.deleteUser('Alex');
-CreateUser.getAll();
-CreateUser.count();
+const alex = new User('Alex');
+console.log(alex.sayHi());
+User.prototype.logout = function () {};
+console.log(alex.__proto__ === User.prototype);
