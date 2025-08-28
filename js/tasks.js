@@ -4362,16 +4362,63 @@ products.addEventListener('click', (e) => {
 
 //
 
-const promise = new Promise((resolve, reject) => {
-   setTimeout(() => {
-      if (Math.random() > 0.5) {
-         resolve('✅ Успіх!');
-      } else {
-         reject('❌ Помилка!');
-      }
-   }, 2000);
-});
-promise
-   .then((res) => console.log('Результат:', res))
-   .catch((err) => console.log('Відхилено:', err))
-   .finally(() => console.log('🔚 Завжди виконується'));
+// const promise = new Promise((resolve, reject) => {
+//    setTimeout(() => {
+//       if (Math.random() > 0.5) {
+//          resolve('✅ Успіх!');
+//       } else {
+//          reject('❌ Помилка!');
+//       }
+//    }, 2000);
+// });
+// promise
+//    .then((res) => console.log('Результат:', res))
+//    .catch((err) => console.log('Відхилено:', err))
+//    .finally(() => console.log('🔚 Завжди виконується'));
+
+//! Repeat for await...of
+
+// // Асинхронний генератор — буде повертати числа з затримкою
+// async function* asyncGenerator() {
+//    yield new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+//    yield new Promise((resolve) => setTimeout(() => resolve(2), 1000));
+//    yield new Promise((resolve) => setTimeout(() => resolve(3), 1000));
+// }
+
+// // Використовуємо for await...of
+// (async () => {
+//    for await (let value of asyncGenerator()) {
+//       console.log(value);
+//    }
+// })();
+
+//
+
+// // Асинхронний генератор, який буде по черзі робити запити
+// async function* fetchUsers(ids) {
+//    for (let id of ids) {
+//       let response = await fetch(
+//          `https://jsonplaceholder.typicode.com/users/${id}`
+//       );
+//       let user = await response.json();
+//       yield user; // віддаємо дані по одному
+//    }
+// }
+
+// // Використання for await...of
+// (async () => {
+//    const ids = [1, 2, 3]; // масив ID користувачів
+
+//    for await (let user of fetchUsers(ids)) {
+//       console.log(`Користувач: ${user.name}, email: ${user.email}`);
+//    }
+// })();
+
+//
+let height = null;
+let width = null;
+
+// важливо: використовуйте дужки
+let area = height ?? 100 * width ?? 50;
+
+alert(area); // 5000
