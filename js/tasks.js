@@ -4188,38 +4188,159 @@ products.addEventListener('click', (e) => {
 
 //! Repeat getters & setters
 
-class BankAccount {
-   constructor(name, balance) {
-      this._name = name;
-      this._balance = balance;
+// class BankAccount {
+//    constructor(name, balance) {
+//       this._name = name;
+//       this._balance = balance;
+//    }
+
+//    // гетер
+//    get balance() {
+//       return this._balance;
+//    }
+
+//    // сетер
+//    set balance(amount) {
+//       if (amount < 0) {
+//          console.log('Помилка: не можна зменшити баланс через сеттер!');
+//       } else {
+//          this._balance += amount;
+//       }
+//    }
+
+//    deposit(amount) {
+//       if (amount > 0) this._balance += amount;
+//       else console.log('Сума поповнення має бути додатною');
+//    }
+// }
+
+// const anna = new BankAccount('Anna', 500);
+
+// console.log(anna.balance); // 500
+// anna.balance = 300;
+// console.log(anna.balance);
+// anna.balance = -100;
+// console.log(anna.balance);
+// anna.deposit(200);
+// console.log(anna.balance);
+
+//
+
+// class BankAccount {
+//    static totalAccounts = 0;
+
+//    constructor(owner, balance = 0) {
+//       this._owner = owner;
+//       this._balance = balance;
+//       BankAccount.totalAccounts++;
+//    }
+
+//    static getTotalAccounts() {
+//       return BankAccount.totalAccounts;
+//    }
+
+//    deposit(amount) {
+//       this._balance += amount;
+//       return this._balance;
+//    }
+
+//    withdraw(amount) {
+//       if (this._balance >= amount) {
+//          this._balance -= amount;
+//       }
+//       return this._balance;
+//    }
+
+//    get balance() {
+//       return this._balance;
+//    }
+
+//    get owner() {
+//       return this._owner;
+//    }
+// }
+
+// const acc1 = new BankAccount('Alice', 100);
+// const acc2 = new BankAccount('Bob');
+
+// acc1.deposit(50);
+// acc2.deposit(200);
+// acc2.withdraw(50);
+
+// console.log(acc1.balance); // 150
+// console.log(acc2.balance); // 150
+// console.log(BankAccount.getTotalAccounts()); // 2
+
+//! Reoeat iterators and generators
+
+// const range = {
+//    start: 1,
+//    end: 5,
+
+//    [Symbol.iterator]() {
+//       let current = this.start;
+//       let last = this.end;
+
+//       return {
+//          next() {
+//             if (current <= last) {
+//                return { value: current++, done: false };
+//             } else {
+//                return { done: true };
+//             }
+//          },
+//       };
+//    },
+// };
+
+// for (let num of range) {
+//    console.log(num); // 1, 2, 3, 4, 5
+// }
+
+//
+
+// function reverseIterator(arr) {
+//    return {
+//       [Symbol.iterator]() {
+//          let index = arr.length - 1;
+
+//          return {
+//             next() {
+//                if (index >= 0) {
+//                   return { value: arr[index--], done: false };
+//                } else {
+//                   return { done: true };
+//                }
+//             },
+//          };
+//       },
+//    };
+// }
+
+// const arr = [10, 20, 30];
+
+// for (let el of reverseIterator(arr)) {
+//    console.log(el);
+// }
+
+//
+
+function* range(start, end, step = 1) {
+   if (step === 0) {
+      throw new Error('Step не може бути нулем');
    }
 
-   // гетер
-   get balance() {
-      return this._balance;
-   }
-
-   // сетер
-   set balance(amount) {
-      if (amount < 0) {
-         console.log('Помилка: не можна зменшити баланс через сеттер!');
-      } else {
-         this._balance += amount;
+   if (step > 0) {
+      for (let i = start; i <= end; i += step) {
+         yield i;
       }
-   }
-
-   deposit(amount) {
-      if (amount > 0) this._balance += amount;
-      else console.log('Сума поповнення має бути додатною');
+   } else {
+      for (let i = start; i >= end; i += step) {
+         yield i;
+      }
    }
 }
 
-const anna = new BankAccount('Anna', 500);
-
-console.log(anna.balance); // 500
-anna.balance = 300; // додаємо через сеттер
-console.log(anna.balance); // 800
-anna.balance = -100; // Помилка: не можна зменшити баланс
-console.log(anna.balance); // 800
-anna.deposit(200); // 1000
-console.log(anna.balance); // 1000
+for (let num of range(1, 10, 2)) {
+   console.log(num);
+}
