@@ -4325,22 +4325,53 @@ products.addEventListener('click', (e) => {
 
 //
 
-function* range(start, end, step = 1) {
-   if (step === 0) {
-      throw new Error('Step не може бути нулем');
-   }
+// function* range(start, end, step = 1) {
+//    if (step === 0) {
+//       throw new Error('Step не може бути нулем');
+//    }
 
-   if (step > 0) {
-      for (let i = start; i <= end; i += step) {
-         yield i;
-      }
-   } else {
-      for (let i = start; i >= end; i += step) {
-         yield i;
-      }
-   }
-}
+//    if (step > 0) {
+//       for (let i = start; i <= end; i += step) {
+//          yield i;
+//       }
+//    } else {
+//       for (let i = start; i >= end; i += step) {
+//          yield i;
+//       }
+//    }
+// }
 
-for (let num of range(1, 10, 2)) {
-   console.log(num);
-}
+// for (let num of range(1, 10, 2)) {
+//    console.log(num);
+// }
+
+//! Repeat promise
+
+// const promise = new Promise((resolve, reject) => {
+//    setTimeout(() => {
+//       resolve('✅ Успіх!');
+//       // reject("❌ Помилка!");
+//    }, 1000);
+// });
+
+// console.log(promise); // одразу покаже Promise { <pending> }
+
+// promise
+//    .then((result) => console.log('Результат:', result))
+//    .catch((err) => console.log('Помилка:', err));
+
+//
+
+const promise = new Promise((resolve, reject) => {
+   setTimeout(() => {
+      if (Math.random() > 0.5) {
+         resolve('✅ Успіх!');
+      } else {
+         reject('❌ Помилка!');
+      }
+   }, 2000);
+});
+promise
+   .then((res) => console.log('Результат:', res))
+   .catch((err) => console.log('Відхилено:', err))
+   .finally(() => console.log('🔚 Завжди виконується'));
