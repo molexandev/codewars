@@ -4414,11 +4414,72 @@ products.addEventListener('click', (e) => {
 //    }
 // })();
 
+//! Repeat Call Stack & Microtasks & Macrotasks (event queue)
+
+// console.log('A');
+
+// setTimeout(() => {
+//    console.log('B');
+// }, 0);
+
+// Promise.resolve()
+//    .then(() => {
+//       console.log('C');
+//    })
+//    .then(() => {
+//       console.log('D');
+//    });
+
+// queueMicrotask(() => {
+//    console.log('E');
+// });
+
+// console.log('F');
+
+// setTimeout(() => {
+//    console.log('G');
+// }, 0);
+
+// Promise.resolve().then(() => {
+//    console.log('H');
+// });
+
+//! queueMicrotask
+
+// let counter = 0;
+// let scheduled = false;
+
+// function update() {
+//    counter++;
+
+//    if (!scheduled) {
+//       scheduled = true;
+
+//       queueMicrotask(() => {
+//          console.log('Обробка даних. Counter =', counter);
+//          scheduled = false;
+//          counter = 0;
+//       });
+//    }
+// }
+
+// // Виклики йдуть поспіль
+// update();
+// update();
+// update();
+
+// console.log('Всі update викликані');
+
 //
-let height = null;
-let width = null;
 
-// важливо: використовуйте дужки
-let area = height ?? 100 * width ?? 50;
+console.log('A');
 
-alert(area); // 5000
+setTimeout(() => console.log('B'), 0);
+
+fetch('https://jsonplaceholder.typicode.com/todos/1').then(() =>
+   console.log('C')
+);
+
+Promise.resolve().then(() => console.log('D'));
+
+console.log('E');
