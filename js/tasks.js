@@ -4472,14 +4472,122 @@ products.addEventListener('click', (e) => {
 
 //
 
-console.log('A');
+// console.log('A');
 
-setTimeout(() => console.log('B'), 0);
+// setTimeout(() => console.log('B'), 0);
 
-fetch('https://jsonplaceholder.typicode.com/todos/1').then(() =>
-   console.log('C')
-);
+// fetch('https://jsonplaceholder.typicode.com/todos/1').then(() =>
+//    console.log('C')
+// );
 
-Promise.resolve().then(() => console.log('D'));
+// Promise.resolve().then(() => console.log('D'));
 
-console.log('E');
+// console.log('E');
+
+//! repeat while / do while / for
+
+// for (let i = 1; i <= 10; i++) {
+//    if (i % 2) {
+//       continue;
+//    }
+//    alert(i);
+// }
+
+//
+
+// let i = 0;
+// while (i < 3) {
+//    alert(`число ${i}!`);
+//    i++;
+// }
+
+//
+
+// let response;
+// do {
+//    response = prompt('Введіть число', 0);
+// } while (response <= 100 && response);
+
+//! repeat switch / case
+
+// function detectBrowser() {
+//    const userAgent = navigator.userAgent.toLowerCase();
+
+//    if (userAgent.includes('chrome') && !userAgent.includes('edg')) {
+//       return 'Chrome';
+//    } else if (userAgent.includes('firefox')) {
+//       return 'Firefox';
+//    } else if (userAgent.includes('safari') && !userAgent.includes('chrome')) {
+//       return 'Safari';
+//    } else if (userAgent.includes('edg')) {
+//       return 'Edge';
+//    } else if (userAgent.includes('opera') || userAgent.includes('opr')) {
+//       return 'Opera';
+//    } else if (userAgent.includes('trident') || userAgent.includes('msie')) {
+//       return 'Internet Explorer';
+//    }
+
+//    return 'Unknown';
+// }
+
+// const browser = detectBrowser();
+
+// // switch (browser) {
+// //    case 'Edge':
+// //       alert("You've got the Edge!");
+// //       break;
+
+// //    case 'Chrome':
+// //    case 'Firefox':
+// //    case 'Safari':
+// //    case 'Opera':
+// //       alert('Ми підтримуємо і ці браузери');
+// //       break;
+
+// //    default:
+// //       alert('Маємо надію, що ця сторінка виглядає добре!');
+// // }
+
+// if (browser == 'Edge') {
+//    alert("You've got the Edge!");
+// } else if (
+//    browser == 'Chrome' ||
+//    browser == 'Firefox' ||
+//    browser == 'Safari' ||
+//    browser == 'Opera'
+// ) {
+//    alert('Ми підтримуємо і ці браузери');
+// } else {
+//    alert('Маємо надію, що ця сторінка виглядає добре!');
+// }
+
+//
+
+// let a = +prompt('a?', '');
+
+// // if (a == 0) {
+// //    alert(0);
+// // }
+// // if (a == 1) {
+// //    alert(1);
+// // }
+
+// // if (a == 2 || a == 3) {
+// //    alert('2,3');
+// // }
+
+// switch (a) {
+//    case 0:
+//       alert(0);
+//       break;
+//    case 1:
+//       alert(1);
+//       break;
+//    case 2:
+//    case 3:
+//       alert('2,3');
+//       break;
+//    default:
+//       alert('Схоже, що ви ввели щось не те...');
+//       break;
+// }
