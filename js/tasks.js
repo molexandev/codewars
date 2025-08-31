@@ -4609,3 +4609,15 @@ products.addEventListener('click', (e) => {
 // console.log(checkAge(10));
 
 //
+
+// function pow(x, n) {
+//    let res = 1;
+//    for (let i = 1; i <= n; i++) {
+//       res = res * x;
+//    }
+//    return res;
+// }
+
+// console.log(pow(3, 5));
+
+//
