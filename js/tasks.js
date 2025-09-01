@@ -4620,4 +4620,17 @@ products.addEventListener('click', (e) => {
 
 // console.log(pow(3, 5));
 
+//! Repeat arrow function
+
+// function ask(question, yes, no) {
+//    if (confirm(question)) yes();
+//    else no();
+// }
+
+// ask(
+//    'Ви згодні?',
+//    () => alert('Ви погодились.'),
+//    () => alert('Ви скасували виконання.')
+// );
+
 //
