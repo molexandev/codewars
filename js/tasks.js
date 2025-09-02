@@ -4633,4 +4633,82 @@ products.addEventListener('click', (e) => {
 //    () => alert('Ви скасували виконання.')
 // );
 
-//
+//! Repeat IIFE
+
+// (function () {
+//    console.log('Hello, IIFE!');
+// })();
+
+// //
+
+// (function (name) {
+//    console.log(`Hello! I am ${name}`);
+// })('Alex');
+
+// //
+
+// const counter = (function () {
+//    const obj = {
+//       count: 0,
+//       increment() {
+//          this.count++;
+//          return this.count;
+//       },
+//    };
+//    return obj;
+// })();
+
+// console.log(counter.increment()); // 1
+// console.log(counter.increment()); // 2
+
+// //
+
+// (function (a) {
+//    return (function (b) {
+//       console.log(a);
+//    })(5);
+// })(10);
+
+//!
+
+const Calculator = (function () {
+   let counter = 0; // приватна змінна
+
+   function log(msg) {
+      console.log('Log:', msg);
+   }
+
+   return {
+      add(n) {
+         counter += n;
+         log(counter);
+      },
+      subtract(n) {
+         counter -= n;
+         log(counter);
+      },
+      multiply(n) {
+         counter *= n;
+         log(counter);
+      },
+      divide(n) {
+         if (n === 0) {
+            log('❌ Не можна ділити на нуль');
+            return;
+         }
+         counter /= n;
+         log(counter);
+      },
+      getResult() {
+         return counter;
+      },
+   };
+})();
+
+// тест
+Calculator.add(5); // Log: 5
+Calculator.add(3); // Log: 8
+Calculator.subtract(2); // Log: 6
+Calculator.multiply(4); // Log: 24
+Calculator.divide(6); // Log: 4
+console.log(Calculator.getResult()); // 4
