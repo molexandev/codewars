@@ -4669,46 +4669,159 @@ products.addEventListener('click', (e) => {
 //    })(5);
 // })(10);
 
-//!
+//! Module Pattern
 
-const Calculator = (function () {
-   let counter = 0; // приватна змінна
+// const Calculator = (function () {
+//    let counter = 0; // приватна змінна
 
-   function log(msg) {
-      console.log('Log:', msg);
-   }
+//    function log(msg) {
+//       console.log('Log:', msg);
+//    }
 
-   return {
-      add(n) {
-         counter += n;
-         log(counter);
-      },
-      subtract(n) {
-         counter -= n;
-         log(counter);
-      },
-      multiply(n) {
-         counter *= n;
-         log(counter);
-      },
-      divide(n) {
-         if (n === 0) {
-            log('❌ Не можна ділити на нуль');
-            return;
-         }
-         counter /= n;
-         log(counter);
-      },
-      getResult() {
-         return counter;
-      },
-   };
-})();
+//    return {
+//       add(n) {
+//          counter += n;
+//          log(counter);
+//       },
+//       subtract(n) {
+//          counter -= n;
+//          log(counter);
+//       },
+//       multiply(n) {
+//          counter *= n;
+//          log(counter);
+//       },
+//       divide(n) {
+//          if (n === 0) {
+//             log('❌ Не можна ділити на нуль');
+//             return;
+//          }
+//          counter /= n;
+//          log(counter);
+//       },
+//       getResult() {
+//          return counter;
+//       },
+//    };
+// })();
 
-// тест
-Calculator.add(5); // Log: 5
-Calculator.add(3); // Log: 8
-Calculator.subtract(2); // Log: 6
-Calculator.multiply(4); // Log: 24
-Calculator.divide(6); // Log: 4
-console.log(Calculator.getResult()); // 4
+// // тест
+// Calculator.add(5); // Log: 5
+// Calculator.add(3); // Log: 8
+// Calculator.subtract(2); // Log: 6
+// Calculator.multiply(4); // Log: 24
+// Calculator.divide(6); // Log: 4
+// console.log(Calculator.getResult()); // 4
+
+//
+
+// const userModule = (function (user, i) {
+//    let users = [];
+
+//    function log(message) {
+//       console.log('[userModule]:', message);
+//    }
+
+//    return {
+//       addUser(user) {
+//          users.push(user);
+//          log(`Додано користувача: ${user.name}`);
+//       },
+
+//       findUser(name) {
+//          return users.find((u) => u.name === name);
+//       },
+
+//       removeUser(name) {
+//          users = users.filter((u) => u.name !== name);
+//          log(`Видалено користувача з ім’ям: ${name}`);
+//       },
+
+//       listUsers() {
+//          return [...users]; // повертаємо копію
+//       },
+//    };
+// })();
+
+// userModule.addUser({ name: 'Alice', age: 25 });
+// userModule.addUser({ name: 'Bob', age: 30 });
+
+// console.log(userModule.listUsers());
+// console.log(userModule.findUser('Alice'));
+
+// userModule.removeUser('Bob');
+// console.log(userModule.listUsers());
+
+//
+
+// const settingsModule = (function () {
+//    let settings = {};
+
+//    function log(message) {
+//       console.log('{settingsModule}:', message);
+//    }
+
+//    return {
+//       set(key, value) {
+//          Object.assign(settings, { [key]: value });
+//          console.log(settings);
+//       },
+//       get(key) {
+//          Object.keys(settings).forEach((item) => {
+//             if (item == key) {
+//                return console.log(item);
+//             }
+//          });
+//       },
+//    };
+// })();
+
+// settingsModule.set('font-size', '25px');
+// settingsModule.set('font-family', 'TNR');
+// settingsModule.set('margin-top', '50px');
+// settingsModule.get('margin-top');
+
+//
+
+// const loggerModule = (function () {
+//    let logs = [];
+
+//    return {
+//       addLog(message) {
+//          logs.push(message);
+//       },
+//       showLogs() {
+//          return console.log(logs);
+//       },
+//    };
+// })();
+
+// loggerModule.addLog('Log 1');
+// loggerModule.addLog('Log 2');
+// loggerModule.addLog('Log 3');
+// loggerModule.showLogs();
+
+// //
+
+// const bankAccount = (function () {
+//    let balance = 0;
+
+//    return {
+//       deposit(sum) {
+//          return (balance += sum);
+//       },
+//       withdraw(sum) {
+//          return (balance -= sum);
+//       },
+//       getBalance() {
+//          return console.log(balance);
+//       },
+//    };
+// })();
+
+// bankAccount.deposit(1000);
+// bankAccount.withdraw(300);
+// bankAccount.getBalance();
+// bankAccount.withdraw(100);
+// bankAccount.deposit(1500);
+// bankAccount.getBalance();
